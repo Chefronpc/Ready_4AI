@@ -1,0 +1,25 @@
+#== Globalne
+__pycache__/
+*.py[cod]
+*.pyo
+*.log
+*.tmp
+*.bak
+
+#== Lokalne
+**/venv*/
+**/.env
+**/.venv/
+**/env/
+
+#== Pliki IDE / Systemowe
+.vscode/
+.DS_store
+Thumbs.db
+desktop.ini
+
+#== Buildy
+**/build/
+**/dist/
+**/*egg-info/
+**/.eggs/
