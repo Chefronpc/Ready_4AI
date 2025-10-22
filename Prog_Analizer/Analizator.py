@@ -101,7 +101,7 @@ def analiza_tekstu(text: str) -> dict:
     """
 
     payload = {
-        "model": "gpt-4o-mini",
+        "model": MODEL_NAME,
         "input": prompt + text
     }
     
