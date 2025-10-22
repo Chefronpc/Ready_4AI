@@ -1,27 +1,24 @@
 Wynik analizy:
 
 Spójność logiczna:
-  Poziom: 7
-  Etykiety: spójny
-
+  Poziom: 6
+  Etykiety: częściowo niespójny
+  Błędy:
+    - Na stole lerzały szkice z ostatnich dni, niekture przekreślone, inne ledwie zaczęte. -> Brak wyraźnego związku między szkicami a ich stanem. Poprawna forma: 'Na stole leżały szkice z ostatnich dni, z których część była przekreślona, a inne ledwie zaczęte.'
 
 Poprawność gramatyczna:
   Poziom: 7
   Etykiety: błędy ortograficzne,błędy gramatyczne
-
   Błędy:
-    - ortograficzne: lerzały -> poprawnie: leżały
-    - ortograficzne: niekture -> poprawnie: niektóre
-    - gramatyczne: wnętrzu spokojny rytm pracy nadawał -> poprawnie: wnętrzu nadawał spokojny rytm pracy
+    - lerzały -> poprawnie: leżały
+    - niekture -> poprawnie: niektóre
 
 Ton:
-  Poziom: 4
+  Poziom: 5
   Etykiety: neutralny
-
 
 Styl:
   Poziom: 6
-  Etykiety: neutralny,literacki
+  Etykiety: formalny,literacki
 
-
-Uwagi: Tekst jest spójny pod względem logicznym, ale zawiera kilka błędów ortograficznych i gramatycznych. Styl jest literacki, co nadaje mu pewnej głębi, mimo że ton jest głównie neutralny.
+Uwagi: Tekst ma kilka błędów ortograficznych oraz gramatycznych, co wpływa na jego płynność. Zawiera również fragmenty, które mogą prowadzić do niepełnego zrozumienia opisywanych sytuacji.

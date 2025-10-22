@@ -1,0 +1,36 @@
+Wynik analizy:
+
+Spójność logiczna:
+  Poziom: 5
+  Etykiety: częściowo niespójny,sprzeczności
+
+  Błędy:
+    - Nauczyciele mowia, ze mlodziez nie szanuje zasad, lecz sami rodzice czesto ignoruja reguly podstawowe. -> Niezgodność: skąd pewność, że rodzice, którzy ignorują zasady, są ci sami, których dotyczy brak szacunku ze strony młodzieży?
+
+Poprawność gramatyczna:
+  Poziom: 6
+  Etykiety: błędy leksykalne,ortograficzne
+
+  Błędy:
+    - myslec -> poprawnie: myśleć
+    - pelne -> poprawnie: pełne
+    - chca -> poprawnie: chcą
+    - zrobic -> poprawnie: zrobić
+    - mowia -> poprawnie: mówią
+    - bledne -> poprawnie: błędne
+    - glupio -> poprawnie: głupio
+    - mysla -> poprawnie: myślą
+    - popelniaja -> poprawnie: popełniają
+    - smiesznie -> poprawnie: śmiesznie
+
+Ton:
+  Poziom: 7
+  Etykiety: sarkastyczny,krytyczny
+
+
+Styl:
+  Poziom: 5
+  Etykiety: potoczny,criticzne
+
+
+Uwagi: Tekst wyraża silną krytykę społeczeństwa i jego zachowań, jednak występują w nim liczne błędy ortograficzne oraz stylistyczne, co wpływa na jego ogólną jakość.

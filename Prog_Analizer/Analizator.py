@@ -21,11 +21,21 @@ HEADERS = {
 
 def analiza_tekstu(text: str) -> dict:
     prompt = f"""
-       Jesteś asystentem analizy tekstu. Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu w kontekście spójnosci logicznej,
-       poprawności gramatycznej, stylu oraz tonu. Do oceny spójnosci logicznej i błędów pisowni dołącz ich przykłady do punktów oceny według poniższej struktury odpowiedzi.
-       (ortograficzne -> podaj słowo z błędem oraz wersje poprawną;  gramatyczne/stylistyczne -> fragment zdania oraz poprawną postać całego zdania) ->
+       Jesteś asystentem analizy tekstu. Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu według poniższych wytycznych:
+        - logiki wypowiedzi - nie tylko w obrębie zdania, lecz również zależności między zdaniami lub akapitami.
+            przeanalizuj czy elementy wypowiedzi, które z kontekstu są zależne, są spójne pod względem logiki.
+        - poprawności gramatycznej - poprawności budowy zdań, użytych odpowiednich odmian, porządku słów, w stosunku do oficjalnych reguł języka.
+            Gdy stwierdzisz tekst o odbiegającej od normy budowie, zweryfikuj, czy może być tekstem z kategorii, slangu, odrębnej kultury lub innych typów określeń języków.
+        - stylu oraz tonu wypowiedzi.       
+       
+       (ortograficzne -> podaj słowo z błędem oraz wersje poprawną;  gramatyczne/stylistyczne -> fragment zdania oraz poprawną postać całego zdania).
        przykład każdego błędu jako jednolity string w formacie " {{typ błędu}}: {{słowo/zdanie z błędem}} -> poprawnie: {{poprawna wersja}}".
-  Analiza powinna być oparta **wyłącznie na treści dostarczonego tekstu** — nie dodawaj informacji spoza podanego tekstu do analizy. 
+       
+       (logiki wypowiedzi -> podaj fragment wykazujący brak logiki oraz wyjasnienie lub poprawną formę)
+        przykład każdego fragmentu jako string w formacie " {{fragment zdania}} -> {{objasnienie / poprawna forma}}".
+
+    Analiza powinna być oparta **wyłącznie na treści dostarczonego tekstu** — nie dodawaj informacji spoza podanego tekstu do analizy. 
+
 
   Zakres oceny: 
 
@@ -141,7 +151,7 @@ def main():
     for kategoria in dane["kategorie"]:
         rows.append(f"{kategoria['kategoria']}:")
         rows.append(f"  Poziom: {kategoria['poziom']}")
-        rows.append(f"  Etykiety: {','.join(kategoria['etykiety'])}\n")
+        rows.append(f"  Etykiety: {','.join(kategoria['etykiety'])}")
         if kategoria.get("błędy"):
             rows.append("  Błędy:")
             for blad in kategoria["błędy"]:
