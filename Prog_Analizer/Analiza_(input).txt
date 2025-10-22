@@ -1,0 +1,24 @@
+Wynik analizy:
+
+Spójność logiczna:
+  Poziom: 6
+  Etykiety: częściowo niespójny
+  Błędy:
+    - Na stole lerzały szkice z ostatnich dni, niekture przekreślone, inne ledwie zaczęte. -> Brak wyraźnego związku między szkicami a ich stanem. Poprawna forma: 'Na stole leżały szkice z ostatnich dni, z których część była przekreślona, a inne ledwie zaczęte.'
+
+Poprawność gramatyczna:
+  Poziom: 7
+  Etykiety: błędy ortograficzne,błędy gramatyczne
+  Błędy:
+    - lerzały -> poprawnie: leżały
+    - niekture -> poprawnie: niektóre
+
+Ton:
+  Poziom: 5
+  Etykiety: neutralny
+
+Styl:
+  Poziom: 6
+  Etykiety: formalny,literacki
+
+Uwagi: Tekst ma kilka błędów ortograficznych oraz gramatycznych, co wpływa na jego płynność. Zawiera również fragmenty, które mogą prowadzić do niepełnego zrozumienia opisywanych sytuacji.
