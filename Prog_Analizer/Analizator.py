@@ -9,6 +9,38 @@ import argparse
 import requests
 
 
+# Konfiguracja API
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_URL = "https://api.openai.com/v1/responses"
+MODEL_NAME = "gpt-4o-mini"
+if not OPENAI_API_KEY:
+    raise EnvironmentError("Brak ustawionej zmiennej środowiskowej OPENAI_API_KEY")
+
+HEADERS = {
+    "Authorization": f"Bearer {OPENAI_API_KEY}",
+    "Content-Type": "application/json"
+}
+
+
+def analiza_tekstu(text: str) -> dict:
+    prompt = f"""
+    Analizuj poniższy tekst pod kątem spójności logicznej.
+
+    Tekst do analizy:
+    \"\"\"{text}\"\"\"
+    """
+
+    payload = {
+        "model": "gpt-4o-mini",
+        "input": prompt
+    }
+
+    response = requests.post("https://api.openai.com/v1/responses", headers=HEADERS, json=payload)
+    response.raise_for_status()
+    result = response.json()
+    return result                   # Tymczasowo do testów
+
+
 def get_next_number():      # Brak param - Założenie analizy plików z bieżącego katalogu. Wzór ustalony na sztywno w funkcji
     pattern = re.compile(r"Analiza_\(cli_" + r"(\d{3})\)\.txt$") 
     max = 0
@@ -40,8 +72,7 @@ def main():
         text = input('Podaj tekst do analizy: ')
 
     try:
-        result = "Testowa odpowiedź modelu językowego."
-        #result = analiza_tekstu(text)
+        result = analiza_tekstu(text)
     except Exception as e:
         print(f'Błąd podczas analizy: {e}')
         return
