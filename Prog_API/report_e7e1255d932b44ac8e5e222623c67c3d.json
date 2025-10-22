@@ -1,0 +1,984 @@
+{
+  "id": "e7e1255d932b44ac8e5e222623c67c3d",
+  "language": "pl",
+  "initial_analysis": {
+    "scores": {
+      "poprawność_językowa": {
+        "score": 1.0,
+        "explanation": "Heurystyczna ocena poprawności językowej; wykryto 0 problem(y). Średnia długość zdania: 17.0."
+      },
+      "spójność": {
+        "score": 0.09930685087737204,
+        "explanation": "Średnie podobieństwo sąsiednich zdań: 0.052. Liczba słabo powiązanych przejść: 71."
+      },
+      "logiczna_konsekwencja": {
+        "score": 1.0,
+        "explanation": "Heurystyka wykrywania sprzeczności; wykryto 0 potencjalnych sprzeczności (fragm.)."
+      },
+      "wiarygodność_faktów": {
+        "score": 0.52,
+        "explanation": "Wykrywanie twierdzeń faktograficznych: heurystyka liczb/dates. Brak integracji z bazą fact-checking (stub)."
+      },
+      "manipulacja_emocjonalna": {
+        "score": 0.9903788334335538,
+        "explanation": "Heurystyka retoryczna: znaleziono 2 emo-słów; gęstość 0.0012."
+      },
+      "czytelność": {
+        "score": 0.4788771983428479,
+        "explanation": "Przybliżona miara czytelności (Flesch, z przybliżonym licznikiem sylab): 0.479 (0=trudne,1=łatwe). Średnia długość zdań: 17.0."
+      }
+    },
+    "issues": [
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          69,
+          160
+        ],
+        "text": "16 lat temu miałem zaszczyt wygłosić pierwsze exposé w roli premiera rządu Rzeczpospolitej."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          161,
+          224
+        ],
+        "text": "Jedno zapamiętałem – pewną lekcję i wyciągnąłem z niej wnioski."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          225,
+          263
+        ],
+        "text": "Chciałem wtedy powiedzieć o wszystkim."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          264,
+          318
+        ],
+        "text": "Byłem premierem debiutantem i mówiłem ponad 3 godziny."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          445,
+          533
+        ],
+        "text": "W związku z tym dzisiaj pozwolicie Państwo, że skupię się na sprawach najpoważniejszych."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          534,
+          637
+        ],
+        "text": "Jestem przekonany, że ten podniosły moment, bo takim jest przecież ten dzień, wymaga poważnej narracji."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          638,
+          696
+        ],
+        "text": "Za nami bardzo brutalna i spektakularna kampania wyborcza."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          697,
+          1132
+        ],
+        "text": "Polska polityka od kilku ładnych lat zatraciła powagę debaty publicznej, mimo, że okoliczności zewnętrzne i wewnętrzne, dramaty, jakie dotknęły w tych latach i nasz naród i cały świat – pandemia, wojna, kryzys migracyjny – a mimo wszystko trudno nam było, i mówię to o nas wszystkich, trudno nam było czasami wydobyć z siebie ton powagi i takiej pełnej odpowiedzialności, która spoczywa na nas wszystkich w tych jakże trudnych czasach."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1133,
+          1222
+        ],
+        "text": "Wczoraj miałem okazję – i dziękuję za zrozumienie Państwa – podziękować moim najbliższym."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1223,
+          1448
+        ],
+        "text": "Ale dzisiaj moje wystąpienie chciałbym rozpocząć od podziękowań wobec tych wszystkich, którzy przez te lata nie zwątpili w to, że Polska może być lepsza, że Polska może być – bo na to zasługuje – najlepszym miejscem na Ziemi."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1449,
+          1478
+        ],
+        "text": "Chciałbym podziękować Polsce."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1479,
+          1537
+        ],
+        "text": "Ja jestem bardzo dumny z mojego kraju – z Polek i Polaków."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1538,
+          1673
+        ],
+        "text": "Także za to, że wiecie, tak jak już bywało w naszej historii, w kluczowej chwili potrafiliśmy się nadzwyczajnie zmobilizować – wszyscy."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1674,
+          1741
+        ],
+        "text": "I doprowadzić do tego, niektórzy twierdzili, niemożliwego przełomu."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1742,
+          1819
+        ],
+        "text": "I dzięki Wam ta kluczowa chwila stała się w jakimś sensie momentem dziejowym."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1820,
+          1915
+        ],
+        "text": "Jestem przekonany, że 15 października dołączy do symbolicznych dat w naszym polskim kalendarzu."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1916,
+          2040
+        ],
+        "text": "Tych tragicznych – przed chwilą uczciliśmy pamięć ofiar jednej z tych tragicznych chwil w naszej historii – i tych pięknych."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2041,
+          2180
+        ],
+        "text": "I myślę, że przejdzie ten 15 października do historii jako dzień, nie pierwszy raz, pokojowego buntu, buntu na rzecz wolności i demokracji."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2181,
+          2310
+        ],
+        "text": "Trochę podobnie jak 31 sierpnia 1989 roku czy 4 czerwca, kiedy odzyskiwaliśmy niepodległość, wolność po zwycięstwie Solidarności."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2311,
+          2500
+        ],
+        "text": "Wyborcy wyłonili w głosowaniu nową rządową koalicję, którą będziemy – już właściwie to się zaczęło wczoraj – będziemy, jeśli państwo pozwolicie, nazywać od dzisiaj koalicją 15 października."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2501,
+          2613
+        ],
+        "text": "To, co zdarzyło się tego dnia, to jednak rzecz dużo poważniejsza niż zmiana rządu, niż zmiana koalicji rządowej."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2614,
+          2772
+        ],
+        "text": "15 października był zwieńczeniem procesu obywatelskiego i narodowego odrodzenia, którego byliśmy uczestnikami, niektórzy świadkami, a niektórzy przeciwnikami."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2773,
+          2827
+        ],
+        "text": "O tych ostatnich pozwólcie, nie będę dziś wiele mówił."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2828,
+          2984
+        ],
+        "text": "Naszą przyszłość chcemy przecież budować \nna naszych nadziejach, na naszych marzeniach i oczekiwaniach, które okazały się silniejsze od zwątpienia i apatii."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          3091,
+          3202
+        ],
+        "text": "Mam wielką osobistą satysfakcję, że w drobnej mierze pomogłem w tym przebudzeniu, w nazwaniu rzeczy po imieniu."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          3203,
+          3316
+        ],
+        "text": "Bo tak naprawdę ten ruch 15 października narodził się właśnie od mówienia prawdy bez ogródek i bez zafałszowania."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          3938,
+          4013
+        ],
+        "text": "Dokładnie tego dnia miał miejsce pierwszy marsz Komitetu Obrony Demokracji."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4014,
+          4428
+        ],
+        "text": "Chciałbym podziękować tym wszystkim, którzy zarówno w Komitecie Obrony Demokracji i w \ninnych ruchach społecznych, organizacjach licznych, czasami kilkuosobowych, dawali właśnie świadectwo odwagi i świadectwo takiej autentycznej, tak absolutnie bezinteresownej miłości do Ojczyzny i poszanowania dla państwa i prawa.Pozwólcie, że przeczytam teraz coś, co w jakimś sensie mogłoby zastąpić to moje dzisiejsze exposé."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4429,
+          4513
+        ],
+        "text": "Niewiele zmieniłbym w tym tekście, który być może umknął już naszej uwadze, pamięci."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4514,
+          4612
+        ],
+        "text": "A bardzo mi zależy, żebyśmy przypomnieli sobie tego człowieka i słowa jakie napisał zanim odszedł."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4613,
+          4629
+        ],
+        "text": "To był manifest."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4630,
+          4815
+        ],
+        "text": "Ja go przeczytam w całości właśnie dlatego, że jestem przekonany, że większość z Państwa tu, w polskim Sejmie, podobnie jak większość Polek i Polaków chyba mogłyby się pod tym podpisać."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4816,
+          4870
+        ],
+        "text": "Napisał to człowiek, który był zupełnie sam tego dnia."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4871,
+          4942
+        ],
+        "text": "“Protestuję przeciwko ograniczaniu przez władzę wolności obywatelskich."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          5433,
+          5837
+        ],
+        "text": "Protestuję przeciwko takiemu sprawowaniu władzy, że osoby na najwyższych stanowiskach w państwie realizują polecenia wydawane przez bliżej nieokreślone centrum decyzyjne, nieponoszące za swoje decyzje odpowiedzialności.Protestuję przeciwko takiej pracy w Sejmie, kiedy ustawy tworzone są w pośpiechu, bez dyskusji i odpowiednich konsultacji, często po nocach, a potem muszą być prawie od razu poprawiane."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          5838,
+          5942
+        ],
+        "text": "Protestuję przeciwko marginalizowaniu roli Polski na arenie międzynarodowej i ośmieszaniu naszego kraju."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          6538,
+          6698
+        ],
+        "text": "Protestuję przeciwko pomniejszaniu dokonań, obrzucaniu błotem i niszczeniu autorytetów takich ludzi jak Lech Wałęsa, czy byli prezesi Trybunału Konstytucyjnego."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          7517,
+          7734
+        ],
+        "text": "Ten, który to napisał, a było to 6 lat temu, już 6 lat temu ktoś tak precyzyjnie – może nie jest to piękny literacki tekst – ale ktoś tak precyzyjnie nazwał lęki, niepokoje, złość, jaka rodziła się w polskich sercach."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          7735,
+          7812
+        ],
+        "text": "Chociaż ci, którzy głośno o tym mówili, mieli prawo wówczas czuć się samotni."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          7936,
+          8056
+        ],
+        "text": "Nawet jeśli podobają się wam postulaty PiS-u, to weźcie pod uwagę, że nie każdy sposób ich realizacji jest dopuszczalny."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8057,
+          8155
+        ],
+        "text": "Realizujcie swoje pomysły w ramach demokratycznego państwa prawa, a nie w taki sposób jak obecnie."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8156,
+          8268
+        ],
+        "text": "Tych, którzy nie popierają PiS-u, bo polityka \njest im obojętna albo mają inne preferencje, wzywam do działania."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8269,
+          8316
+        ],
+        "text": "Nie wystarczy czekać na to, co czas przyniesie."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8374,
+          8429
+        ],
+        "text": "Trzeba działać, a form i możliwości jest naprawdę dużo."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8430,
+          8539
+        ],
+        "text": "Proszę Was jednak, pamiętajcie, że wyborcy PiS to także nasze matki, bracia, sąsiedzi, przyjaciele i koledzy."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8540,
+          8582
+        ],
+        "text": "Nie chodzi o to, żeby toczyć z nimi wojnę."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8583,
+          8618
+        ],
+        "text": "Być może tego właśnie chciałby PiS."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8619,
+          8730
+        ],
+        "text": "Ani nawrócić ich, bo to naiwne, ale o to, aby swoje poglądy realizowali zgodnie z prawem i zasadami demokracji."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8731,
+          8815
+        ],
+        "text": "Ja, zwykły szary człowiek, taki jak wy wzywam was wszystkich, nie czekajcie dłużej”."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8877,
+          9192
+        ],
+        "text": "Chcę powiedzieć, że naprawdę jestem poruszony czytając te słowa i też trochę poruszony, słysząc okrzyki niezadowolenia, bo nie jest tak łatwo powiedzieć słowa nacechowane szacunkiem i w jakimś sensie miłością do tych, którzy mają inne poglądy, w dniu, w którym decyduje się na tak tragiczny w swojej formie protest."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          9193,
+          9304
+        ],
+        "text": "Na tej sali, drodzy państwo, są także tu, wśród nas, posłanki i posłowie, którzy również doświadczyli tragedii."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          9305,
+          9485
+        ],
+        "text": "Nie chcę, żeby ten dzień był pod znakiem wspomnień dramatycznych, tragicznych i smutnych, ale nie mogę nie wspomnieć mojego przyjaciela, prezydenta mojego miasta, Pawła Adamowicza."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          9659,
+          9789
+        ],
+        "text": "I było to w dniu, kiedyika – być może dzień, w którym udzielicie wotum zaufania nowej Radzie Ministrów, był początkiem odrodzenia."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          9901,
+          9987
+        ],
+        "text": "Przecież będziemy mieli, mieliśmy, mamy i będziemy mieli różne poglądy na wiele spraw."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          9988,
+          10013
+        ],
+        "text": "Ale chcemy być wspólnotą."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10014,
+          10072
+        ],
+        "text": "I temu będzie służyła przede wszystkim praca nowego rządu."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10073,
+          10105
+        ],
+        "text": "Na czym ma polegać ta wspólnota?"
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10106,
+          10187
+        ],
+        "text": "Dlaczego mamy dzisiaj taki problem z powiedzeniem o sobie, że jesteśmy wspólnotą?"
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10188,
+          10338
+        ],
+        "text": "Dlaczego te lata były nacechowane coraz gorętszym konfliktem politycznym, emocjami – nie tylko w tej Izbie, bo wiecie, to jest akurat coś naturalnego."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10339,
+          10416
+        ],
+        "text": "Po to tu się zbieramy w \npolskim Sejmie, w polskim Senacie, żeby się spierać."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10745,
+          10767
+        ],
+        "text": "To nie są puste słowa."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10768,
+          10811
+        ],
+        "text": "Wszyscy cierpimy z tego powodu bez wyjątku."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10812,
+          10970
+        ],
+        "text": "Będę prosił was wszystkich, żebyście pomyśleli o tych republikańskich fundamentach, ramach, które pozwalają budować wspólnotę polityczną i wspólnotę narodową."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10971,
+          11042
+        ],
+        "text": "Skoro jesteśmy tak różni, skoro mamy tak różne poglądy, różne korzenie."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11043,
+          11092
+        ],
+        "text": "Przywiązani jesteśmy czasami do różnych tradycji."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11093,
+          11159
+        ],
+        "text": "Wierzymy w Boga, gdzie indziej szukamy inspiracji do bycia dobrym."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11160,
+          11213
+        ],
+        "text": "Przecież tak, to jest to bogactwo to jest nasz naród."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11214,
+          11279
+        ],
+        "text": "Każdy jest wart szacunku i respektu, każdy jest wart swoich praw."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11280,
+          11509
+        ],
+        "text": "To, co naprawdę buduje wspólnotę, to są rządy prawa, to jest konstytucja, to są zasady demokracji, to jest bezpieczna granica i bezpieczne terytorium, to są te sprawy, o które nie powinniśmy się w żadnym wypadku kłócić i spierać."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11510,
+          11558
+        ],
+        "text": "One są czymś, co musimy respektować bez wyjątku."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11559,
+          11651
+        ],
+        "text": "Po to, żeby móc się różnić w innych sprawach, żeby móc się różnić bezpiecznie, z szacunkiem."
+      },
+      {
+        "type": "numeric_claim_no_source",
+        "span": [
+          69,
+          71
+        ],
+        "text": "16"
+      },
+      {
+        "type": "emotive_word",
+        "span": [
+          10238,
+          10246
+        ],
+        "text": "konflikt"
+      },
+      {
+        "type": "emotive_word",
+        "span": [
+          9356,
+          9367
+        ],
+        "text": "dramatyczny"
+      }
+    ],
+    "confidence": 0.15000000000000008
+  },
+  "reanalysis": {
+    "prompt_used": "Proszę wykonać ponowną, dokładną analizę tekstu (język polski) według następujących instrukcji:\n\n1) Problemy wykryte w pierwszej analizie:\n- Niska ogólna pewność oceny: confidence=0.15.\n- Duże rozbieżności pomiędzy rule-based a vector model w kategoriach:\n   * poprawność_językowa: rule=1.00, vector=0.60\n   * wiarygodność_faktów: rule=0.52, vector=0.85\n   * czytelność: rule=0.48, vector=0.90\n- Wykryto potencjalne sprzeczności: 74 fragmenty.\n\n2) Fragmenty, które sprawiły trudność (przykłady):\n  1. (span [69, 160]) \"16 lat temu miałem zaszczyt wygłosić pierwsze exposé w roli premiera rządu Rzeczpospolitej.\"\n  2. (span [161, 224]) \"Jedno zapamiętałem – pewną lekcję i wyciągnąłem z niej wnioski.\"\n  3. (span [225, 263]) \"Chciałem wtedy powiedzieć o wszystkim.\"\n  4. (span [264, 318]) \"Byłem premierem debiutantem i mówiłem ponad 3 godziny.\"\n  5. (span [445, 533]) \"W związku z tym dzisiaj pozwolicie Państwo, że skupię się na sprawach najpoważniejszych.\"\n\n3) Które metody wzmocnić/zmienić:\n   - Użyj semantycznej analizy kontekstu przy wykrywaniu sprzeczności (porównaj znaczenia zdań, nie tylko słowa),\n   - Wzmocnij detekcję źródeł przy twierdzeniach liczbowych (szukaj słów typu 'źródło', 'wg', 'badanie'),\n   - Przy poprawności językowej skup się zarówno na interpunkcji, jak i długości zdań; rozbij bardzo długie zdania i oceń strukturę.\n\n4) Konkretnie: dla każdej kategorii podaj wartość score 0.0-1.0, krótkie wyjaśnienie i max 5 przykładów (span/text). Jeśli wykrywasz sprzeczność, wskaż obie sprzeczne frazy i uzasadnij dlaczego są sprzeczne.\n\n5) Uwaga: jeśli pewność (confidence) < 0.6 – określ dodatkowe kroki weryfikacji i oznacz obszary o niskiej pewności.\n\nTekst do analizy (użyj go dokładnie bez zmian):\n\n===BEGIN_TEXT===\nPanie marszałku, panie posłanki, panowie posłowie, czcigodni goście. 16 lat temu miałem zaszczyt wygłosić pierwsze exposé w roli premiera rządu Rzeczpospolitej. Jedno zapamiętałem – pewną lekcję i wyciągnąłem z niej wnioski. Chciałem wtedy powiedzieć o wszystkim. Byłem premierem debiutantem i mówiłem ponad 3 godziny. Dostałem z domu telefon z taką przestrogą – mówiłeś wtedy 3 godziny i to, co zapamiętali \nPolacy to to, że mówiłeś 3 godziny. W związku z tym dzisiaj pozwolicie Państwo, że skupię się na sprawach najpoważniejszych. Jestem przekonany, że ten podniosły moment, bo takim jest przecież ten dzień, wymaga poważnej narracji. Za nami bardzo brutalna i spektakularna kampania wyborcza. Polska polityka od kilku ładnych lat zatraciła powagę debaty publicznej, mimo, że okoliczności zewnętrzne i wewnętrzne, dramaty, jakie dotknęły w tych latach i nasz naród i cały świat – pandemia, wojna, kryzys migracyjny – a mimo wszystko trudno nam było, i mówię to o nas wszystkich, trudno nam było czasami wydobyć z siebie ton powagi i takiej pełnej odpowiedzialności, która spoczywa na nas wszystkich w tych jakże trudnych czasach. Wczoraj miałem okazję – i dziękuję za zrozumienie Państwa – podziękować moim najbliższym. Ale dzisiaj moje wystąpienie chciałbym rozpocząć od podziękowań wobec tych wszystkich, którzy przez te lata nie zwątpili w to, że Polska może być lepsza, że Polska może być – bo na to zasługuje – najlepszym miejscem na Ziemi. Chciałbym podziękować Polsce. Ja jestem bardzo dumny z mojego kraju – z Polek i Polaków. Także za to, że wiecie, tak jak już bywało w naszej historii, w kluczowej chwili potrafiliśmy się nadzwyczajnie zmobilizować – wszyscy. I doprowadzić do tego, niektórzy twierdzili, niemożliwego przełomu. I dzięki Wam ta kluczowa chwila stała się w jakimś sensie momentem dziejowym. Jestem przekonany, że 15 października dołączy do symbolicznych dat w naszym polskim kalendarzu. Tych tragicznych – przed chwilą uczciliśmy pamięć ofiar jednej z tych tragicznych chwil w naszej historii – i tych pięknych. I myślę, że przejdzie ten 15 października do historii jako dzień, nie pierwszy raz, pokojowego buntu, buntu na rzecz wolności i demokracji. Trochę podobnie jak 31 sierpnia 1989 roku czy 4 czerwca, kiedy odzyskiwaliśmy niepodległość, wolność po zwycięstwie Solidarności. Wyborcy wyłonili w głosowaniu nową rządową koalicję, którą będziemy – już właściwie to się zaczęło wczoraj – będziemy, jeśli państwo pozwolicie, nazywać od dzisiaj koalicją 15 października. To, co zdarzyło się tego dnia, to jednak rzecz dużo poważniejsza niż zmiana rządu, niż zmiana koalicji rządowej. 15 października był zwieńczeniem procesu obywatelskiego i narodowego odrodzenia, którego byliśmy uczestnikami, niektórzy świadkami, a niektórzy przeciwnikami. O tych ostatnich pozwólcie, nie będę dziś wiele mówił. Naszą przyszłość chcemy przecież budować \nna naszych nadziejach, na naszych marzeniach i oczekiwaniach, które okazały się silniejsze od zwątpienia i apatii. A przede wszystkim silniejsze od zła, które rozpleniło się w polskim życiu publicznym w ostatnich latach. Mam wielką osobistą satysfakcję, że w drobnej mierze pomogłem w tym przebudzeniu, w nazwaniu rzeczy po imieniu. Bo tak naprawdę ten ruch 15 października narodził się właśnie od mówienia prawdy bez ogródek i bez zafałszowania. Ten ruch narodził się na długo przed moim powrotem do polskiej polityki, dzięki tym wszystkim, którzy podnosili głos, czasem krzyk – od pierwszych dni rządów ustępującej ekipy.Składam tym wszystkim Polkom i Polakom hołd – tak z głębi serca. Jestem przekonany, że dzisiejszy dzień to jest konsekwencja tego, że niektóre i niektórzy z was odważyli się wyjść na ulicę. Niektórzy odważyli się stanąć samotnie gdzieś w powiatowym mieście, pod budynkiem sądu, wtedy, kiedy wszyscy jakby czuli, że coś złego zaczyna się dziać z naszą Ojczyzną, ale nie wszyscy znaleźli w sobie determinację czy odwagę, żeby dać temu świadectwo. Dokładnie tego dnia miał miejsce pierwszy marsz Komitetu Obrony Demokracji. Chciałbym podziękować tym wszystkim, którzy zarówno w Komitecie Obrony Demokracji i w \ninnych ruchach społecznych, organizacjach licznych, czasami kilkuosobowych, dawali właśnie świadectwo odwagi i świadectwo takiej autentycznej, tak absolutnie bezinteresownej miłości do Ojczyzny i poszanowania dla państwa i prawa.Pozwólcie, że przeczytam teraz coś, co w jakimś sensie mogłoby zastąpić to moje dzisiejsze exposé. Niewiele zmieniłbym w tym tekście, który być może umknął już naszej uwadze, pamięci. A bardzo mi zależy, żebyśmy przypomnieli sobie tego człowieka i słowa jakie napisał zanim odszedł. To był manifest. Ja go przeczytam w całości właśnie dlatego, że jestem przekonany, że większość z Państwa tu, w polskim Sejmie, podobnie jak większość Polek i Polaków chyba mogłyby się pod tym podpisać. Napisał to człowiek, który był zupełnie sam tego dnia. “Protestuję przeciwko ograniczaniu przez władzę wolności obywatelskich. Protestuję przeciwko łamaniu przez rządzących zasad demokracji, w szczególności przeciwko zniszczeniu (w praktyce) Trybunału Konstytucyjnego i niszczeniu systemu niezależnych sądów. Protestuję przeciwko łamaniu przez władzę prawa, w szczególności Konstytucji Rzeczypospolitej Polskiej. Protestuję przeciwko temu, aby ci, którzy są za to odpowiedzialni, podejmowali jakiekolwiek działania \nw kierunku zmian w obecnej konstytucji – najpierw niech przestrzegają tej, która obecnie obowiązuje. Protestuję przeciwko takiemu sprawowaniu władzy, że osoby na najwyższych stanowiskach w państwie realizują polecenia wydawane przez bliżej nieokreślone centrum decyzyjne, nieponoszące za swoje decyzje odpowiedzialności.Protestuję przeciwko takiej pracy w Sejmie, kiedy ustawy tworzone są w pośpiechu, bez dyskusji i odpowiednich konsultacji, często po nocach, a potem muszą być prawie od razu poprawiane. Protestuję przeciwko marginalizowaniu roli Polski na arenie międzynarodowej i ośmieszaniu naszego kraju. Protestuję przeciwko niszczeniu przyrody szczególnie przez tych, którzy mają ją chronić i innych obszarów cennych przyrodniczo. Protestuję przeciwko dzieleniu społeczeństwa, umacnianiu i pogłębianiu tych podziałów. W szczególności protestuję przeciwko budowaniu “religii smoleńskiej” – na tym tle, dzieleniu ludzi. Protestuję przeciwko seansom nienawiści, przeciwko językowi nienawiści i ksenofobii wprowadzanej przez władze do debaty publicznej. Protestuję przeciwko obsadzaniu wszystkich możliwych do obsadzenia stanowisk swoimi ludźmi, którzy w większości nie mają odpowiednich kwalifikacji. Protestuję przeciwko pomniejszaniu dokonań, obrzucaniu błotem i niszczeniu autorytetów takich ludzi jak Lech Wałęsa, czy byli prezesi Trybunału Konstytucyjnego. Protestuję przeciwko nadmiernej centralizacji państwa i zmianom prawa dotyczącego samorządów i organizacji pozarządowych zgodnie z doraźnymi potrzebami politycznymi rządzącej partii. Protestuję przeciwko wrogiemu stosunkowi władzy do imigrantów oraz przeciw dyskryminacji różnych grup mniejszościowych: kobiet, osób homoseksualnych, muzułmanów i innych. Protestuję przeciwko całkowitemu ubezwłasnowolnieniu telewizji publicznej i niemal całego radia, i zrobieniu z nich tub propagandowych władzy.Protestuję przeciwko wykorzystaniu służb specjalnych, Policji i prokuratury do realizacji swoich własnych, partyjnych lub prywatnych celów. Protestuję przeciwko nieprzemyślanej, nieskonsultowanej i nieprzygotowanej reformie oświaty. Protestuję przeciwko ignorowaniu ogromnych potrzeb służby zdrowia”.To jest 15 protestów. Ten, który to napisał, a było to 6 lat temu, już 6 lat temu ktoś tak precyzyjnie – może nie jest to piękny literacki tekst – ale ktoś tak precyzyjnie nazwał lęki, niepokoje, złość, jaka rodziła się w polskich sercach. Chociaż ci, którzy głośno o tym mówili, mieli prawo wówczas czuć się samotni. Ten człowiek zakończył ten spis protestów słowami: “przede wszystkim wzywam, aby przebudzili się ci, którzy popierają PiS. Nawet jeśli podobają się wam postulaty PiS-u, to weźcie pod uwagę, że nie każdy sposób ich realizacji jest dopuszczalny. Realizujcie swoje pomysły w ramach demokratycznego państwa prawa, a nie w taki sposób jak obecnie. Tych, którzy nie popierają PiS-u, bo polityka \njest im obojętna albo mają inne preferencje, wzywam do działania. Nie wystarczy czekać na to, co czas przyniesie. Nie wystarczy wyrażać niezadowolenia w gronie znajomych. Trzeba działać, a form i możliwości jest naprawdę dużo. Proszę Was jednak, pamiętajcie, że wyborcy PiS to także nasze matki, bracia, sąsiedzi, przyjaciele i koledzy. Nie chodzi o to, żeby toczyć z nimi wojnę. Być może tego właśnie chciałby PiS. Ani nawrócić ich, bo to naiwne, ale o to, aby swoje poglądy realizowali zgodnie z prawem i zasadami demokracji. Ja, zwykły szary człowiek, taki jak wy wzywam was wszystkich, nie czekajcie dłużej”. Piotr Szczęsny, szary człowiek – spłonął jesienią 2017 roku. Chcę powiedzieć, że naprawdę jestem poruszony czytając te słowa i też trochę poruszony, słysząc okrzyki niezadowolenia, bo nie jest tak łatwo powiedzieć słowa nacechowane szacunkiem i w jakimś sensie miłością do tych, którzy mają inne poglądy, w dniu, w którym decyduje się na tak tragiczny w swojej formie protest. Na tej sali, drodzy państwo, są także tu, wśród nas, posłanki i posłowie, którzy również doświadczyli tragedii. Nie chcę, żeby ten dzień był pod znakiem wspomnień dramatycznych, tragicznych i smutnych, ale nie mogę nie wspomnieć mojego przyjaciela, prezydenta mojego miasta, Pawła Adamowicza. Nie mogę i nie chcę wyrzucić z pamięci tego symbolicznego momentu, w którym wzywał do solidarności. Do tego momentu, kiedy mówił o Gdańsku jako o mieście szczodrym, hojnym. I było to w dniu, kiedyika – być może dzień, w którym udzielicie wotum zaufania nowej Radzie Ministrów, był początkiem odrodzenia. Odrodzenia też tego ducha autentycznej solidarności i poszanowania praw wspólnoty, w której ludzie się różnią. Przecież będziemy mieli, mieliśmy, mamy i będziemy mieli różne poglądy na wiele spraw. Ale chcemy być wspólnotą. I temu będzie służyła przede wszystkim praca nowego rządu. Na czym ma polegać ta wspólnota? Dlaczego mamy dzisiaj taki problem z powiedzeniem o sobie, że jesteśmy wspólnotą? Dlaczego te lata były nacechowane coraz gorętszym konfliktem politycznym, emocjami – nie tylko w tej Izbie, bo wiecie, to jest akurat coś naturalnego. Po to tu się zbieramy w \npolskim Sejmie, w polskim Senacie, żeby się spierać. Ale przecież istotą demokracji jest to, istotą państwa, gdzie żyją wolni obywatele, jest to, żeby spierać się, toczyć tę wojnę na górze, tu w Sejmie, w parlamencie. I po to, \nżeby uchronić własny naród, własne rodziny, Polki i Polaków od takiej nieustannej wojny politycznej tam na dole, wśród zwykłych ludzi, w naszych domach. To nie są puste słowa. Wszyscy cierpimy z tego powodu bez wyjątku. Będę prosił was wszystkich, żebyście pomyśleli o tych republikańskich fundamentach, ramach, które pozwalają budować wspólnotę polityczną i wspólnotę narodową. Skoro jesteśmy tak różni, skoro mamy tak różne poglądy, różne korzenie. Przywiązani jesteśmy czasami do różnych tradycji. Wierzymy w Boga, gdzie indziej szukamy inspiracji do bycia dobrym. Przecież tak, to jest to bogactwo to jest nasz naród. Każdy jest wart szacunku i respektu, każdy jest wart swoich praw. To, co naprawdę buduje wspólnotę, to są rządy prawa, to jest konstytucja, to są zasady demokracji, to jest bezpieczna granica i bezpieczne terytorium, to są te sprawy, o które nie powinniśmy się w żadnym wypadku kłócić i spierać. One są czymś, co musimy respektować bez wyjątku. Po to, żeby móc się różnić w innych sprawach, żeby móc się różnić bezpiecznie, z szacunkiem.\n===END_TEXT===\n\nOdpowiedz w formacie JSON zawierającym pola: scores (kategorie), issues (lista), confidence (0.0-1.0).",
+    "scores": {
+      "poprawność_językowa": {
+        "score": 1.0,
+        "explanation": "Symulowana reanalysis: pierwotne 1.00, vector 0.60"
+      },
+      "spójność": {
+        "score": 0.14434150833350345,
+        "explanation": "Symulowana reanalysis: pierwotne 0.10, vector 0.05"
+      },
+      "logiczna_konsekwencja": {
+        "score": 1.0,
+        "explanation": "Symulowana reanalysis: pierwotne 1.00, vector 0.90"
+      },
+      "wiarygodność_faktów": {
+        "score": 0.619,
+        "explanation": "Symulowana reanalysis: pierwotne 0.52, vector 0.85"
+      },
+      "manipulacja_emocjonalna": {
+        "score": 0.9908598917618762,
+        "explanation": "Symulowana reanalysis: pierwotne 0.99, vector 0.90"
+      },
+      "czytelność": {
+        "score": 0.6053977123093813,
+        "explanation": "Symulowana reanalysis: pierwotne 0.48, vector 0.90"
+      }
+    },
+    "issues": [
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          69,
+          160
+        ],
+        "text": "16 lat temu miałem zaszczyt wygłosić pierwsze exposé w roli premiera rządu Rzeczpospolitej."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          161,
+          224
+        ],
+        "text": "Jedno zapamiętałem – pewną lekcję i wyciągnąłem z niej wnioski."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          264,
+          318
+        ],
+        "text": "Byłem premierem debiutantem i mówiłem ponad 3 godziny."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          445,
+          533
+        ],
+        "text": "W związku z tym dzisiaj pozwolicie Państwo, że skupię się na sprawach najpoważniejszych."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          534,
+          637
+        ],
+        "text": "Jestem przekonany, że ten podniosły moment, bo takim jest przecież ten dzień, wymaga poważnej narracji."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          638,
+          696
+        ],
+        "text": "Za nami bardzo brutalna i spektakularna kampania wyborcza."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1133,
+          1222
+        ],
+        "text": "Wczoraj miałem okazję – i dziękuję za zrozumienie Państwa – podziękować moim najbliższym."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1223,
+          1448
+        ],
+        "text": "Ale dzisiaj moje wystąpienie chciałbym rozpocząć od podziękowań wobec tych wszystkich, którzy przez te lata nie zwątpili w to, że Polska może być lepsza, że Polska może być – bo na to zasługuje – najlepszym miejscem na Ziemi."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1479,
+          1537
+        ],
+        "text": "Ja jestem bardzo dumny z mojego kraju – z Polek i Polaków."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1538,
+          1673
+        ],
+        "text": "Także za to, że wiecie, tak jak już bywało w naszej historii, w kluczowej chwili potrafiliśmy się nadzwyczajnie zmobilizować – wszyscy."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1742,
+          1819
+        ],
+        "text": "I dzięki Wam ta kluczowa chwila stała się w jakimś sensie momentem dziejowym."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          1916,
+          2040
+        ],
+        "text": "Tych tragicznych – przed chwilą uczciliśmy pamięć ofiar jednej z tych tragicznych chwil w naszej historii – i tych pięknych."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2311,
+          2500
+        ],
+        "text": "Wyborcy wyłonili w głosowaniu nową rządową koalicję, którą będziemy – już właściwie to się zaczęło wczoraj – będziemy, jeśli państwo pozwolicie, nazywać od dzisiaj koalicją 15 października."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          2614,
+          2772
+        ],
+        "text": "15 października był zwieńczeniem procesu obywatelskiego i narodowego odrodzenia, którego byliśmy uczestnikami, niektórzy świadkami, a niektórzy przeciwnikami."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          3091,
+          3202
+        ],
+        "text": "Mam wielką osobistą satysfakcję, że w drobnej mierze pomogłem w tym przebudzeniu, w nazwaniu rzeczy po imieniu."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          3203,
+          3316
+        ],
+        "text": "Bo tak naprawdę ten ruch 15 października narodził się właśnie od mówienia prawdy bez ogródek i bez zafałszowania."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4014,
+          4428
+        ],
+        "text": "Chciałbym podziękować tym wszystkim, którzy zarówno w Komitecie Obrony Demokracji i w \ninnych ruchach społecznych, organizacjach licznych, czasami kilkuosobowych, dawali właśnie świadectwo odwagi i świadectwo takiej autentycznej, tak absolutnie bezinteresownej miłości do Ojczyzny i poszanowania dla państwa i prawa.Pozwólcie, że przeczytam teraz coś, co w jakimś sensie mogłoby zastąpić to moje dzisiejsze exposé."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4429,
+          4513
+        ],
+        "text": "Niewiele zmieniłbym w tym tekście, który być może umknął już naszej uwadze, pamięci."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4514,
+          4612
+        ],
+        "text": "A bardzo mi zależy, żebyśmy przypomnieli sobie tego człowieka i słowa jakie napisał zanim odszedł."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4613,
+          4629
+        ],
+        "text": "To był manifest."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4630,
+          4815
+        ],
+        "text": "Ja go przeczytam w całości właśnie dlatego, że jestem przekonany, że większość z Państwa tu, w polskim Sejmie, podobnie jak większość Polek i Polaków chyba mogłyby się pod tym podpisać."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          4871,
+          4942
+        ],
+        "text": "“Protestuję przeciwko ograniczaniu przez władzę wolności obywatelskich."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          5838,
+          5942
+        ],
+        "text": "Protestuję przeciwko marginalizowaniu roli Polski na arenie międzynarodowej i ośmieszaniu naszego kraju."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          7735,
+          7812
+        ],
+        "text": "Chociaż ci, którzy głośno o tym mówili, mieli prawo wówczas czuć się samotni."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          7936,
+          8056
+        ],
+        "text": "Nawet jeśli podobają się wam postulaty PiS-u, to weźcie pod uwagę, że nie każdy sposób ich realizacji jest dopuszczalny."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8269,
+          8316
+        ],
+        "text": "Nie wystarczy czekać na to, co czas przyniesie."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          8374,
+          8429
+        ],
+        "text": "Trzeba działać, a form i możliwości jest naprawdę dużo."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          9901,
+          9987
+        ],
+        "text": "Przecież będziemy mieli, mieliśmy, mamy i będziemy mieli różne poglądy na wiele spraw."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10106,
+          10187
+        ],
+        "text": "Dlaczego mamy dzisiaj taki problem z powiedzeniem o sobie, że jesteśmy wspólnotą?"
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10188,
+          10338
+        ],
+        "text": "Dlaczego te lata były nacechowane coraz gorętszym konfliktem politycznym, emocjami – nie tylko w tej Izbie, bo wiecie, to jest akurat coś naturalnego."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10339,
+          10416
+        ],
+        "text": "Po to tu się zbieramy w \npolskim Sejmie, w polskim Senacie, żeby się spierać."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          10971,
+          11042
+        ],
+        "text": "Skoro jesteśmy tak różni, skoro mamy tak różne poglądy, różne korzenie."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11043,
+          11092
+        ],
+        "text": "Przywiązani jesteśmy czasami do różnych tradycji."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11280,
+          11509
+        ],
+        "text": "To, co naprawdę buduje wspólnotę, to są rządy prawa, to jest konstytucja, to są zasady demokracji, to jest bezpieczna granica i bezpieczne terytorium, to są te sprawy, o które nie powinniśmy się w żadnym wypadku kłócić i spierać."
+      },
+      {
+        "type": "low_transition_similarity",
+        "span": [
+          11559,
+          11651
+        ],
+        "text": "Po to, żeby móc się różnić w innych sprawach, żeby móc się różnić bezpiecznie, z szacunkiem."
+      },
+      {
+        "type": "numeric_claim_no_source",
+        "span": [
+          69,
+          71
+        ],
+        "text": "16"
+      },
+      {
+        "type": "emotive_word",
+        "span": [
+          10238,
+          10246
+        ],
+        "text": "konflikt"
+      },
+      {
+        "type": "emotive_word",
+        "span": [
+          9356,
+          9367
+        ],
+        "text": "dramatyczny"
+      }
+    ],
+    "confidence": 0.30000000000000004
+  },
+  "comparison": {
+    "score_deltas": {
+      "poprawność_językowa": 0.0,
+      "spójność": 0.045034657456131416,
+      "logiczna_konsekwencja": 0.0,
+      "wiarygodność_faktów": 0.09899999999999998,
+      "manipulacja_emocjonalna": 0.00048105832832234796,
+      "czytelność": 0.1265205139665334
+    },
+    "confidence_delta": 0.14999999999999997
+  },
+  "recommendations": [
+    "Skoncentruj się na: spójność (score 0.10). Rozważ: dodatkowa analiza semantyczna, reguły rozbijania długich zdań, weryfikacja liczb źródłami.",
+    "Skoncentruj się na: czytelność (score 0.48). Rozważ: dodatkowa analiza semantyczna, reguły rozbijania długich zdań, weryfikacja liczb źródłami.",
+    "Skoncentruj się na: wiarygodność_faktów (score 0.52). Rozważ: dodatkowa analiza semantyczna, reguły rozbijania długich zdań, weryfikacja liczb źródłami.",
+    "Ogólna pewność niska — rozważ integrację z zewnętrznym LLM lub usługą fact-check oraz poprawienie rule-based heurystyk."
+  ],
+  "metadata": {
+    "runtime_seconds": 15.259296417236328,
+    "version": "0.1.0"
+  }
+}
