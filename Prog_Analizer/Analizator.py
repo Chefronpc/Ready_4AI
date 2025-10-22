@@ -67,25 +67,25 @@ def analiza_tekstu(text: str) -> dict:
         "kategorie": [
             {{
                 "kategoria": "Spójność logiczna":
-                "poziom": 4,
+                "poziom": liczba 1-10,
                 "etykiety": [ określenia w formie listy],
                 "błędy": [ ]
             }}, {{
                 "kategoria": "Poprawność gramatyczna":
-                "poziom": 8,
+                "poziom": liczba 1-10,
                 "etykiety": [ określenia w formie listy],
                 "błędy": [ ]
             }}, {{
                 "kategoria": "Ton":
-                "poziom": 3,
+                "poziom": liczba 1-10,
                 "etykiety": [ określenia w formie listy]
             }}, {{
                 "kategoria": "Styl":
-                "poziom": 6,
+                "poziom": liczba 1-10,
                 "etykiety": [ określenia w formie listy]
             }}
         ],
-        "uwagi": "Krótki komentarz podsumowujący (1-3 zdania)."
+        "uwagi": "Komentarz podsumowujący (1-4 zdania)."
         ]
     }}
   
