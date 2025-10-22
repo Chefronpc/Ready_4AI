@@ -1,0 +1,27 @@
+Wynik analizy:
+
+Spójność logiczna:
+  Poziom: 7
+  Etykiety: spójny
+
+
+Poprawność gramatyczna:
+  Poziom: 7
+  Etykiety: błędy ortograficzne,błędy gramatyczne
+
+  Błędy:
+    - ortograficzne: lerzały -> poprawnie: leżały
+    - ortograficzne: niekture -> poprawnie: niektóre
+    - gramatyczne: wnętrzu spokojny rytm pracy nadawał -> poprawnie: wnętrzu nadawał spokojny rytm pracy
+
+Ton:
+  Poziom: 4
+  Etykiety: neutralny
+
+
+Styl:
+  Poziom: 6
+  Etykiety: neutralny,literacki
+
+
+Uwagi: Tekst jest spójny pod względem logicznym, ale zawiera kilka błędów ortograficznych i gramatycznych. Styl jest literacki, co nadaje mu pewnej głębi, mimo że ton jest głównie neutralny.
