@@ -3,7 +3,6 @@ import requests
 url = "https://jsonplaceholder.typicode.com/posts/"
 
 while True:
-
     inp = input("enter -> odczyt WebSerwis\nnext -> następna funkcja\n>> ")
 
     if inp == "next":
@@ -21,7 +20,6 @@ while True:
 
 
 while True:
-
     in_titile  = input("Podaj tytuł: ")
     in_body    = input("Podaj treść: ")
 
@@ -32,7 +30,8 @@ while True:
 
     data = {
         "title": in_titile,
-        "body": in_body
+        "body": in_body,
+        "userId": 1
     }
 
     response = requests.post(url, json=data)
