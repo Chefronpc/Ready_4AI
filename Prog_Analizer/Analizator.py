@@ -1,7 +1,3 @@
-"""
-Ocena spójności logicznej tekstu przy uzyciu modelu LLM OpenAI (gtp-4o-mini)
-"""
-
 import os
 import re
 import json
@@ -12,6 +8,7 @@ import requests
 # Konfiguracja API
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_API_URL = "https://api.openai.com/v1/responses"
+#MODEL_NAME = "gpt-5"
 MODEL_NAME = "gpt-4o-mini"
 if not OPENAI_API_KEY:
     raise EnvironmentError("Brak ustawionej zmiennej środowiskowej OPENAI_API_KEY")
@@ -24,59 +21,68 @@ HEADERS = {
 
 def analiza_tekstu(text: str) -> dict:
     prompt = f"""
-       Jesteś asystentem analizy tekstu. Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu w kontekście spójnosci logicznej, poprawności gramatycznej, stylu oraz tonu.
+       Jesteś asystentem analizy tekstu. Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu w kontekście spójnosci logicznej,
+       poprawności gramatycznej, stylu oraz tonu. Do oceny spójnosci logicznej i błędów pisowni dołącz ich przykłady do punktów oceny według poniższej struktury odpowiedzi.
+       (ortograficzne -> podaj słowo z błędem oraz wersje poprawną;  gramatyczne/stylistyczne -> fragment zdania oraz poprawną postać całego zdania) ->
+       przykład każdego błędu jako jednolity string w formacie " {{typ błędu}}: {{słowo/zdanie z błędem}} -> poprawnie: {{poprawna wersja}}".
   Analiza powinna być oparta **wyłącznie na treści dostarczonego tekstu** — nie dodawaj informacji spoza podanego tekstu do analizy. 
 
   Zakres oceny: 
 
-    1. Spójność logiczna
+    1. kategoria: Spójność logiczna
     Oceń, czy tekst jest spójny pod względem logicznym.   
     - etykiety: [przykłady: spójny, niespójny, częściowo niespójny, ... ] 
     - ocena: 1-10 (1 = wiele sprzeczności, 10 = spójny)   
+    - błędy: Jeżeli jest, dołącz fragment oryginalnego tekstu z przykładową niespójnością do tego punktu
     
-    2. **Poprawność gramatyczna**  
+    2. kategoria: Poprawność gramatyczna
     Oceń poziom poprawności gramatycznej w tekście.  
-    - dominujące_błędy: [gramatyczne, ortograficzne, stylistyczne, ...]
-    - ocena: 1-10 (1 = wiele różnych błędów, 10 = bezbłędny)  
+    - etykiety: [błędy gramatyczne, ortograficzne, stylistyczne, ...]
+    - ocena: 1-10 (1 = wiele różnych błędów, 10 = bezbłędny)
+    - błędy: Jeżeli są błędy, dołącz ich treść z błęd ami do tego puntku
 
-    3. **Ton**  
+    3. kategoria: Ton
     Określ charakter języka
     - etykiety: [ironiczny, sarkastyczny, uprzejmy, ...]  
     - intensywność: 1-10 (1 = słabo zauważalny ton, 10 = bardzo wyraźny ton)
     
-    4. **Styl**  
+    4. kategoria: Styl
     Określ styl języka
     - etykiety: [potoczny, formalny, neutralny, ...]  
     - intensywność: 1-10 (1 = neutralny, 10 = intensywny)
 
+  Format odpowiedzi (JSON): Zwróć dane **dokładnie w poniższej strukturze JSON**, bez dodatkowych komentarzy, tekstu, znaków specjalnych \n, \t, itp:
 
-  Format odpowiedzi (JSON):
-
-    Zwróć dane **dokładnie w poniższej strukturze JSON**, bez dodatkowych komentarzy ani tekstu:
-
-    {{
-    "analiza_artykulu": 
-       {{
-        "kategoria": {{
-        "ocena": int,
-        "etykieta": [string, ...]
-        }},
-         {{
-          ...
-         }},
-         .... ,
-        "meta": {{
-        "uwagi": "krótki komentarz (1-2 zdania podsumowania oceny)"
-        }}
+    {{  
+        "kategorie": [
+            {{
+                "kategoria": "Spójność logiczna":
+                "poziom": 4,
+                "etykiety": [ określenia w formie listy],
+                "błędy": [ ]
+            }}, {{
+                "kategoria": "Poprawność gramatyczna":
+                "poziom": 8,
+                "etykiety": [ określenia w formie listy],
+                "błędy": [ ]
+            }}, {{
+                "kategoria": "Ton":
+                "poziom": 3,
+                "etykiety": [ określenia w formie listy]
+            }}, {{
+                "kategoria": "Styl":
+                "poziom": 6,
+                "etykiety": [ określenia w formie listy]
+            }}
+        ],
+        "uwagi": "Krótki komentarz podsumowujący (1-3 zdania)."
+        ]
     }}
-    }}
-
   
     ### Zasady:
     - Etykietę nadaj zgodną z kategorią i dopasuj do skali i uzyskanej oceny.
     - Jeśli czegoś nie da się ocenić — użyj wartości neutralnych (np. ocena = 5).
     - Używaj języka polskiego w odpowiedzi.
-
   
     Analizowany tekst:
 
@@ -86,12 +92,10 @@ def analiza_tekstu(text: str) -> dict:
         "model": "gpt-4o-mini",
         "input": prompt + text
     }
-
+    
     response = requests.post("https://api.openai.com/v1/responses", headers=HEADERS, json=payload)
-    response.raise_for_status()
-    response = response.json()
-    return response
-
+    return response.json()['output'][0]['content'][0]['text']
+   
 
 def get_next_number():      # Brak param - Założenie analizy plików z bieżącego katalogu. Wzór ustalony na sztywno w funkcji
     pattern = re.compile(r"Analiza_\(cli_" + r"(\d{3})\)\.txt$") 
@@ -116,26 +120,37 @@ def main():
                 print(f'Plik nie istnieje: {args.i}')
                 return
             with open(args.i, 'r', encoding='utf-8') as in_f:
-                text = in_f.read()
+                input_txt = in_f.read()
         except Exception as e:
             print(f'Błąd odczytu pliku: {e}')
             return  
     else:
-        text = input('Podaj tekst do analizy: ')
+        input_txt = input('Podaj tekst do analizy: ')
 
     try:
-        result = analiza_tekstu(text)
-        
-        
-
-        #output = result["analiza_artykulu"][0]
-        #comments = result["analiza_artykulu"][0]["meta"][0]["Uwagi"]
-        output = "-"
-        comments = "-"
+        result = analiza_tekstu(input_txt)
     except Exception as e:
         print(f'Błąd podczas analizy: {e}')
-        return
+        return    
+
+    dane = json.loads(result)
+  
+    rows = []
+    rows.append("Wynik analizy:\n")
     
+    for kategoria in dane["kategorie"]:
+        rows.append(f"{kategoria['kategoria']}:")
+        rows.append(f"  Poziom: {kategoria['poziom']}")
+        rows.append(f"  Etykiety: {','.join(kategoria['etykiety'])}\n")
+        if kategoria.get("błędy"):
+            rows.append("  Błędy:")
+            for blad in kategoria["błędy"]:
+                rows.append(f"    - {blad}")
+        rows.append("")  # odstęp między kategoriami
+    rows.append(f"Uwagi: {dane['uwagi']}\n")
+        
+    text = "\n".join(rows)
+
     try:
         # Ustalanie nazwy pliku
         if args.i:
@@ -145,7 +160,7 @@ def main():
         fname = f"Analiza_({base_name}).txt"
         
         with open(fname, 'w', encoding='utf-8') as out_f:
-            json.dump(f"{print(type(result))}    Analiza tekstu:\n\n {output} \n\nUwagi: \n{comments}", out_f, ensure_ascii=False, indent=2)
+            out_f.write(text)
         print(f'Analiza zakończona. Wynik zapisano do: {fname}')
     except Exception as e:
         print(f'Błąd zapisu wyniku: {e}')
