@@ -3,20 +3,39 @@ Ocena spójności logicznej tekstu przy uzyciu modelu LLM OpenAI (gtp-4o-mini)
 """
 
 import os
+import re
 import json
 import argparse
 import requests
 
 
+def get_next_number():      # Brak param - Założenie analizy plików z bieżącego katalogu. Wzór ustalony na sztywno w funkcji
+    pattern = re.compile(r"Analiza_\(cli_" + r"(\d{3})\)\.txt$") 
+    max = 0
+    for file in os.listdir("."):
+        match = pattern.search(file)
+        if match:
+            num = int(match.group(1))
+            if num > max:
+                max = num
+    return max + 1
+
+
 def main():
     parser = argparse.ArgumentParser(description='Analiza jakości i spójności tekstu przy użyciu modelu OpenAI - gpt-4o-mini.')
-    parser.add_argument('--input-file', type=str, help='Input file path')
-    parser.add_argument('--output-file', type=str, help='Output file path')
+    parser.add_argument('-i', type=str, help='Input file path')
     args = parser.parse_args()
 
-    if args.input_file:
-        with open(args.input_file, 'r', encoding='utf-8') as in_f:
-            text = in_f.read()
+    if args.i:
+        try:
+            if not os.path.exists(args.i):
+                print(f'Plik nie istnieje: {args.i}')
+                return
+            with open(args.i, 'r', encoding='utf-8') as in_f:
+                text = in_f.read()
+        except Exception as e:
+            print(f'Błąd odczytu pliku: {e}')
+            return  
     else:
         text = input('Podaj tekst do analizy: ')
 
@@ -28,11 +47,13 @@ def main():
         return
     
     try:
-        if args.input_file:
-            base_name = os.path.splitext(os.path.basename(args.input_file))[0]
+        # Ustalanie nazwy pliku
+        if args.i:
+            base_name = os.path.splitext(os.path.basename(args.i))[0]
         else:
-            base_name = f"cli_{round}"
+            base_name = f"cli_{get_next_number():03d}"
         fname = f"Analiza_({base_name}).txt"
+        
         with open(fname, 'w', encoding='utf-8') as out_f:
             json.dump(result, out_f, ensure_ascii=False, indent=2)
         print(f'Analiza zakończona. Wynik zapisano do: {fname}')
