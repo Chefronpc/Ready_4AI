@@ -5,18 +5,23 @@ import argparse
 import requests
 
 
+class ConfigError(Exception):
+    pass
+
 # Konfiguracja API
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_API_URL = "https://api.openai.com/v1/responses"
 #MODEL_NAME = "gpt-5"
 MODEL_NAME = "gpt-4o-mini"
+
 if not OPENAI_API_KEY:
-    raise EnvironmentError("Brak ustawionej zmiennej środowiskowej OPENAI_API_KEY")
+    raise ConfigError("Brak ustawionej zmiennej środowiskowej OPENAI_API_KEY")
 
 HEADERS = {
     "Authorization": f"Bearer {OPENAI_API_KEY}",
     "Content-Type": "application/json"
 }
+
 
 
 def analiza_tekstu(text: str) -> dict:
