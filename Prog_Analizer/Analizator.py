@@ -22,7 +22,7 @@ HEADERS = {
 }
 
 
-def analiza_tekstu(text: str) -> json:
+def analiza_tekstu(text: str) -> dict:
     prompt = f"""
        Jesteś asystentem analizy tekstu. Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu w kontekście spójnosci logicznej, poprawności gramatycznej, stylu oraz tonu.
   Analiza powinna być oparta **wyłącznie na treści dostarczonego tekstu** — nie dodawaj informacji spoza podanego tekstu do analizy. 
