@@ -110,7 +110,7 @@ def analiza_tekstu(text: str) -> dict:
         "input": prompt + text
     }
     
-    response = requests.post("https://api.openai.com/v1/responses", headers=HEADERS, json=payload)
+    response = requests.post(OPENAI_API_URL, headers=HEADERS, json=payload)
     return response.json()['output'][0]['content'][0]['text']
    
 
