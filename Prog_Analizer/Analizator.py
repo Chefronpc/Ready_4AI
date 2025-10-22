@@ -22,10 +22,12 @@ HEADERS = {
 def analiza_tekstu(text: str) -> dict:
     prompt = f"""
        Jesteś asystentem analizy tekstu. Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu według poniższych wytycznych:
+       Na wstępie określ język wypowiedzi i dopasuj kryteria oceny do wykrytego języka, gwary lub slangu.
         - logiki wypowiedzi - nie tylko w obrębie zdania, lecz również zależności między zdaniami lub akapitami.
             przeanalizuj czy elementy wypowiedzi, które z kontekstu są zależne, są spójne pod względem logiki.
         - poprawności gramatycznej - poprawności budowy zdań, użytych odpowiednich odmian, porządku słów, w stosunku do oficjalnych reguł języka.
-            Gdy stwierdzisz tekst o odbiegającej od normy budowie, zweryfikuj, czy może być tekstem z kategorii, slangu, odrębnej kultury lub innych typów określeń języków.
+            Ważne: Gdy stwierdzisz tekst z kategorii, slangu, regionalnego lub innych typów określeń języków, kryteria oceny dopasuj do rozpoznanego rodzaju/języka tekstu.
+            Jeżeli nie wykazano ani jednego błędu z kategorii to nie wypisuj w etykietach rodzaju błędów.
         - stylu oraz tonu wypowiedzi.       
        
        (ortograficzne -> podaj słowo z błędem oraz wersje poprawną;  gramatyczne/stylistyczne -> fragment zdania oraz poprawną postać całego zdania).
@@ -67,21 +69,21 @@ def analiza_tekstu(text: str) -> dict:
         "kategorie": [
             {{
                 "kategoria": "Spójność logiczna":
-                "poziom": liczba 1-10,
+                "poziom": liczba,
                 "etykiety": [ określenia w formie listy],
                 "błędy": [ ]
             }}, {{
                 "kategoria": "Poprawność gramatyczna":
-                "poziom": liczba 1-10,
+                "poziom": liczba,
                 "etykiety": [ określenia w formie listy],
                 "błędy": [ ]
             }}, {{
                 "kategoria": "Ton":
-                "poziom": liczba 1-10,
+                "poziom": liczba,
                 "etykiety": [ określenia w formie listy]
             }}, {{
                 "kategoria": "Styl":
-                "poziom": liczba 1-10,
+                "poziom": liczba,
                 "etykiety": [ określenia w formie listy]
             }}
         ],
@@ -92,7 +94,7 @@ def analiza_tekstu(text: str) -> dict:
     ### Zasady:
     - Etykietę nadaj zgodną z kategorią i dopasuj do skali i uzyskanej oceny.
     - Jeśli czegoś nie da się ocenić — użyj wartości neutralnych (np. ocena = 5).
-    - Używaj języka polskiego w odpowiedzi.
+    - Jeżeli rozpoznasz inny język regionalny (kaszubski, śląski, romski, itp), dopasuj kryteria oceny do danego rodzaju języka/gwary.
   
     Analizowany tekst:
 
