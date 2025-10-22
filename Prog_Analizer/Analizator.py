@@ -26,8 +26,8 @@ HEADERS = {
 
 def analiza_tekstu(text: str) -> dict:
     prompt = f"""
-       Jesteś asystentem analizy tekstu. Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu według poniższych wytycznych:
-       Na wstępie określ język wypowiedzi i dopasuj kryteria oceny do wykrytego języka, gwary lub slangu.
+       Jesteś asystentem analizy tekstu. Na wstępie określ język wypowiedzi i dopasuj kryteria oceny do wykrytego języka, gwary lub slangu.
+       Twoim zadaniem jest przeprowadzenie obiektywnej analizy podanego tekstu według poniższych wytycznych:
         - logiki wypowiedzi - nie tylko w obrębie zdania, lecz również zależności między zdaniami lub akapitami.
             przeanalizuj czy elementy wypowiedzi, które z kontekstu są zależne, są spójne pod względem logiki.
         - poprawności gramatycznej - poprawności budowy zdań, użytych odpowiednich odmian, porządku słów, w stosunku do oficjalnych reguł języka.
@@ -56,7 +56,7 @@ def analiza_tekstu(text: str) -> dict:
     Oceń poziom poprawności gramatycznej w tekście.  
     - etykiety: [błędy gramatyczne, ortograficzne, stylistyczne, ...]
     - ocena: 1-10 (1 = wiele różnych błędów, 10 = bezbłędny)
-    - błędy: Jeżeli są błędy, dołącz ich treść z błęd ami do tego puntku
+    - błędy: Jeżeli są błędy, dołącz ich treść z błędami do tego puntku
 
     3. kategoria: Ton
     Określ charakter języka
