@@ -19,43 +19,32 @@ HEADERS = {
 }
 
 
-def send_prompt(prompt: str) -> str:
+def send_prompt(prompt: str, prev_resp_id: str = None) -> dict:
     payload = {
         "model": MODEL_NAME,
-        "input": prompt
-        "previous_response_id": 
+        "input": prompt,
+        "previous_response_id": prev_resp_id 
     }
     response = requests.post(OPENAI_API_URL, headers=HEADERS, json=payload)
-    return response.json()['output'][0]['content'][0]['text']
+    return {"msg": response.json()['output'][0]['content'][0]['text'], "conv_id": response.json()['id']}
 
 
-def question(qu_talk_all: str) -> dict:
-    text_in = input("\n> ")
-    text_in = text_in.strip()
-    print("")
-    return {"all": qu_talk_all + "\n" + text_in, "last": text_in}
+def get_cli_question() -> str:
+    return input("\n> ").strip()
     
-
-def answer( text_send: str) -> dict:
-    an_response = send_prompt(text_send)
-    result_all = text_send + "\n" + an_response
-    return {"all": result_all, "last":  an_response}
-
 
 def main():
 
+    prev_resp_id = None
     print("    Chatbot: Napisz cokolwiek :)")
-    talk_all = {"all": "", "last": ""}   # Treść konwersacji
 
     while True:
-        talk_full = question(talk_all['all'])
-        if talk_full["last"] == "quit":
+        my_msg = get_cli_question()
+        if my_msg == "quit":
             break
-        talk_full = answer(talk_full["all"])
-        talk_hist = talk_full["all"] + "\n" + talk_full["last"]
-        talk_all = {"all": talk_hist, "last": talk_full["last"]}
-
-        print(talk_full["last"])
+        rsp_msg = send_prompt(my_msg, prev_resp_id=prev_resp_id)
+        prev_resp_id = rsp_msg["conv_id"]
+        print(f"\n{rsp_msg["msg"]}")
 
 
 if __name__ == "__main__":
