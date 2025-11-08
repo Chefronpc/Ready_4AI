@@ -6,8 +6,6 @@ from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_core.chat_history import InMemoryChatMessageHistory
 
-load_dotenv()
-store = {}
 
 class ChatHistory:
     """Zarządza historią konwersacji dla różnych sesji."""
@@ -24,29 +22,75 @@ class ChatHistory:
 
 def initialize_model(chat_history: ChatHistory) -> RunnableWithMessageHistory:
     """Inicjalizuje model chatbota z historią."""
-    load_dotenv()
-    model = init_chat_model(model="gpt-4.1-nano", model_provider="openai", verbose=True)
-    return RunnableWithMessageHistory(
-        model,
-        chat_history.get_session_history
-    )
+    if not chat_history:
+        raise ValueError("Brak historii czatu, ""None""")
+
+    try:
+        load_dotenv()
+        model = init_chat_model(model="gpt-4.1-nano", model_provider="openai", verbose=True)
+        if not model:
+            raise RuntimeError("Nie udało się zainicjoać modelu")
+        
+        return RunnableWithMessageHistory(
+            model,
+            chat_history.get_session_history
+        )
+    except Exception as e:
+        raise RuntimeError(f"Błąd podczas inicjalizacji modelu: {e}")
 
 
 def chat_loop(model_with_history: RunnableWithMessageHistory, config: dict) -> None:
     """Główna pętla chatbota obsługująca interakcję z użytkownikiem."""
+    print("Chatbot został uruchomiony. Wpisz 'quit' aby zakończyć.")
+    
     while True:
-        user_input = input("Ty: ")
-        response = model_with_history.invoke(user_input, config)
-        print("Asystent: " + response.content)
+        try:
+            user_input = input("\nTy: ").strip()
+            
+            if user_input.lower() in ('quit', 'exit', 'q'):
+                print("Do widzenia!")
+                break
+                
+            if not user_input:
+                continue
+            
+            response = model_with_history.invoke(user_input, config)
+            print("Asystent: " + response.content)
+            
+        except KeyboardInterrupt:
+            print("\nProgram został przerwany przez użytkownika.")
+            break
+        except Exception as e:
+            print(f"Wystąpił błąd: {e}")
+            print("Spróbuj ponownie lub wpisz 'quit' aby zakończyć.")
 
 
-def main():
+def main() -> int:
     """Główna funkcja programu."""
-    config = {"configurable": {"session_id": "Ready4AI"}}
-    chat_history = ChatHistory()
-    model_with_history = initialize_model(chat_history)
-    chat_loop(model_with_history, config)
+    try:
+        config = {"configurable": {"session_id": "Ready4AI"}}
+        chat_history = ChatHistory()
+        try:
+            model_with_history = initialize_model(chat_history)
+        except RuntimeError as e:
+            print(f"Błąd inicjalizacji modelu: {e}")
+            return 1
+        except Exception as e:
+            print(f"Nieoczekiwany błąd podczas inicjalizacji: {e}")
+            return 1
+        
+        try:
+            chat_loop(model_with_history, config)
+        except Exception as e:
+            print(f"Błąd podczas działania chatbota: {e}")
+            return 1
 
+    except Exception as e:
+        print(f"Krytyczny błąd: {e}")
+        return 1
+    
+    return 0
 
+    
 if __name__ == "__main__":
     main()
