@@ -1,10 +1,24 @@
-from json import load
 from typing import Dict
 from dotenv import load_dotenv
 from langchain.chat_models import init_chat_model
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
+from langchain_core.messages import SystemMessage
 from langchain_core.runnables import RunnableWithMessageHistory
 from langchain_core.chat_history import InMemoryChatMessageHistory
+
+# Stałe konfiguracyjne
+DEFAULT_CONFIG = {
+    "configurable": {
+        "session_id": "Ready4AI"
+    }
+}
+
+SYSTEM_MESSAGE = "Odpowiadaj z humorem"
+
+MODEL_CONFIG = {
+    "model": "gpt-4.1-nano",
+    "model_provider": "openai",
+    "verbose": True
+}
 
 
 class ChatHistory:
@@ -16,20 +30,20 @@ class ChatHistory:
         """Pobiera lub tworzy nową historię dla danej sesji."""
         if session_id not in self.store:
             self.store[session_id] = InMemoryChatMessageHistory()
-            self.store[session_id].add_message(SystemMessage("Odpowiadaj z humorem"))
+            self.store[session_id].add_message(SystemMessage(SYSTEM_MESSAGE))
         return self.store[session_id]
 
 
 def initialize_model(chat_history: ChatHistory) -> RunnableWithMessageHistory:
     """Inicjalizuje model chatbota z historią."""
     if not chat_history:
-        raise ValueError("Brak historii czatu, ""None""")
+        raise ValueError("Brak historii czatu, wartość ""None""")
 
     try:
         load_dotenv()
-        model = init_chat_model(model="gpt-4.1-nano", model_provider="openai", verbose=True)
+        model = init_chat_model(**MODEL_CONFIG)
         if not model:
-            raise RuntimeError("Nie udało się zainicjoać modelu")
+            raise RuntimeError("Nie udało się zainicjalizować modelu")
         
         return RunnableWithMessageHistory(
             model,
@@ -55,7 +69,7 @@ def chat_loop(model_with_history: RunnableWithMessageHistory, config: dict) -> N
                 continue
             
             response = model_with_history.invoke(user_input, config)
-            print("Asystent: " + response.content)
+            print(f"Asystent: {response.content}")
             
         except KeyboardInterrupt:
             print("\nProgram został przerwany przez użytkownika.")
@@ -68,7 +82,6 @@ def chat_loop(model_with_history: RunnableWithMessageHistory, config: dict) -> N
 def main() -> int:
     """Główna funkcja programu."""
     try:
-        config = {"configurable": {"session_id": "Ready4AI"}}
         chat_history = ChatHistory()
         try:
             model_with_history = initialize_model(chat_history)
@@ -80,7 +93,7 @@ def main() -> int:
             return 1
         
         try:
-            chat_loop(model_with_history, config)
+            chat_loop(model_with_history, DEFAULT_CONFIG)
         except Exception as e:
             print(f"Błąd podczas działania chatbota: {e}")
             return 1
@@ -91,6 +104,6 @@ def main() -> int:
     
     return 0
 
-    
+
 if __name__ == "__main__":
     main()
