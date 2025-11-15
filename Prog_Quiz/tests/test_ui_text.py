@@ -52,7 +52,7 @@ def test_ask_topic(monkeypatch, capsys, ui):
     assert "Python" in out
 
 def test_ask_topic_empty_then_valid(monkeypatch, capsys, ui):
-    responses = iter(["", "  ", "Python"])
+    responses = iter(["", "  ", "Python", ""])  # Cztery wejścia: dwa błędy + prawidłowe + ENTER
     monkeypatch.setattr(builtins, "input", lambda _: next(responses))
     result = ui.ask_topic()
     assert result == "Python"
@@ -67,7 +67,7 @@ def test_ask_number_of_questions_edges(monkeypatch, capsys, ui, user_input):
     assert result == int(user_input)
 
 def test_ask_number_of_questions_invalid(monkeypatch, capsys, ui):
-    responses = iter(["0", "-1", "abc", "5"])
+    responses = iter(["0", "-1", "abc", "5", ""])  # Cztery błędy + prawidłowe + ENTER
     monkeypatch.setattr(builtins, "input", lambda _: next(responses))
     result = ui.ask_number_of_questions(1, 10)
     assert result == 5
