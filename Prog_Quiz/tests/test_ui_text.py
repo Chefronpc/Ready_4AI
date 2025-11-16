@@ -2,6 +2,7 @@ import pytest
 import builtins
 import os
 from ui_text import UITextInterface
+from config import MIN_QUESTIONS, MAX_QUESTIONS
 
 class DummyScreen:
     def __init__(self):
@@ -60,11 +61,12 @@ def test_ask_topic_empty_then_valid(monkeypatch, capsys, ui):
     assert "Temat nie może być pusty" in out
 
 # --- Testy wyboru liczby pytań ---
-@pytest.mark.parametrize("user_input", ["1", "10"])
-def test_ask_number_of_questions_edges(monkeypatch, capsys, ui, user_input):
-    monkeypatch.setattr(builtins, "input", lambda _: user_input)
+@pytest.mark.parametrize("user_input,expected", [("1", 1), ("10", 10)])
+def test_ask_number_of_questions_edges(monkeypatch, capsys, ui, user_input, expected):
+    responses = iter([user_input, ""])  # Prawidłowe wejście + ENTER
+    monkeypatch.setattr(builtins, "input", lambda _: next(responses))
     result = ui.ask_number_of_questions(1, 10)
-    assert result == int(user_input)
+    assert result == expected
 
 def test_ask_number_of_questions_invalid(monkeypatch, capsys, ui):
     responses = iter(["0", "-1", "abc", "5", ""])  # Cztery błędy + prawidłowe + ENTER
@@ -73,6 +75,23 @@ def test_ask_number_of_questions_invalid(monkeypatch, capsys, ui):
     assert result == 5
     out = capsys.readouterr().out
     assert "Wpisz liczbę z zakresu" in out
+
+@pytest.mark.parametrize("out_of_bounds_inputs,valid_input,expected", [
+    ([str(MIN_QUESTIONS - 1), str(MAX_QUESTIONS + 1)], str((MIN_QUESTIONS + MAX_QUESTIONS) // 2), (MIN_QUESTIONS + MAX_QUESTIONS) // 2),  # Poniżej i powyżej zakresu
+    ([str(MIN_QUESTIONS - 1)], str(MIN_QUESTIONS + 1), MIN_QUESTIONS + 1),  # Tylko poniżej zakresu
+    ([str(MAX_QUESTIONS + 1)], str(MAX_QUESTIONS - 1), MAX_QUESTIONS - 1),  # Tylko powyżej zakresu
+])
+def test_ask_number_of_questions_out_of_bounds(monkeypatch, capsys, ui, out_of_bounds_inputs, valid_input, expected):
+    """Test parametryzowany weryfikuje wartości poza zakresem MIN_QUESTIONS i MAX_QUESTIONS z config.py"""
+    responses = iter(out_of_bounds_inputs + [valid_input, ""])
+    monkeypatch.setattr(builtins, "input", lambda _: next(responses))
+    result = ui.ask_number_of_questions(MIN_QUESTIONS, MAX_QUESTIONS)
+    assert result == expected
+    out = capsys.readouterr().out
+    # Powinny być komunikaty o błędzie dla nieprawidłowych wartości
+    assert "Wpisz liczbę z zakresu" in out
+    assert str(MIN_QUESTIONS) in out  # Komunikat zawiera minimalną wartość
+    assert str(MAX_QUESTIONS) in out  # Komunikat zawiera maksymalną wartość
 
 # --- Testy wyświetlania pytania ---
 def test_display_question(capsys, ui):
