@@ -10,17 +10,17 @@ from config import MAX_QUESTIONS, MIN_QUESTIONS
 def valid_quiz_item() -> QuizItem:
     """Zwraca przykładowy poprawny obiekt QuizItem."""
     return QuizItem(
-        "question": "What is the capital of France?",
-        "a": "Berlin",
-        "b": "Madrid",
-        "c": "Paris",
-        "d": "Rome",
-        "correct": "b"
+        question="What is the capital of France?",
+        a="Berlin",
+        b="Madrid",
+        c="Paris",
+        d="Rome",
+        correct="b"
     )
     
 
 @pytest.fixture
-def valid_quiz_response(valid_quiz_item) -> list:
+def valid_quiz_response(valid_quiz_item: QuizItem) -> list:
     """Zwraca przykładową poprawną odpowiedź z AI jako lista słowników."""
     return [
         valid_quiz_item,
@@ -57,14 +57,14 @@ def test_generate_quiz_whitespace_topic():
 
 
 @pytest.mark.parametrize("n_questions", [MIN_QUESTIONS - 1, 0, -1, -10])
-def test_generate_quiz_below_min_question(n_questions):
+def test_generate_quiz_below_min_question(n_questions: int):
     """Test: liczba pytań poniżej MIN_QUESTIONS powinna wywołać wyjątek"""
     with pytest.raises((ValueError, AIServiceError, InvalidModelResponseError)):
         generate_quiz("Python", n_questions)
 
 
 @pytest.mark.parametrize("n_questions", [MAX_QUESTIONS + 1, MAX_QUESTIONS + 10, 100])
-def test_generate_quiz_above_max_questions(n_questions):
+def test_generate_quiz_above_max_questions(n_questions: int):
     """Test: liczba pytań powyżej MAX_QUESTIONS powinna wywołać wyjątek"""
     with pytest.raises((ValueError, AIServiceError, InvalidModelResponseError)):
         generate_quiz("Python", n_questions)
@@ -72,7 +72,7 @@ def test_generate_quiz_above_max_questions(n_questions):
 
 # --- Testy prawidłowego działania ---
 @patch('ai_generator.requests')  # Użycie requst do komunikacji z API
-def test_generate_quiz_valid_input(mock_requests, valid_quiz_response):
+def test_generate_quiz_valid_input(mock_requests, valid_quiz_response: list):
     """Test: prawidłowe wejście powinno zwrócić poprawną listę QuizItem"""
     # Mockowanie odpowiedzi z AI
     mock_response = MagicMock()
@@ -103,7 +103,7 @@ def test_generate_quiz_valid_input(mock_requests, valid_quiz_response):
 
 @pytest.mark.parametrize("n_questions", [MIN_QUESTIONS, MIN_QUESTIONS + 5, MAX_QUESTIONS - 5, MAX_QUESTIONS])
 @patch('ai_generator.requests')
-def test_generate_quiz_boundary_questions(mock_requests, valid_quiz_item, n_questions):
+def test_generate_quiz_boundary_questions(mock_requests, valid_quiz_item: QuizItem, n_questions: int):
     """Test: Liczba pytań na granicach zakresu powinna działać poprawnie"""
     # Mock odpowiedzi z odpowiednią liczbą pytań
     mock_response = MagicMock()
