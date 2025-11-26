@@ -177,63 +177,13 @@ class QuizApplication:
         total_questions = len(self.quiz.questions)
         
         # Użyj result_procesor do wygenerowania raportu
-        report_text = self._build_custom_report(
+        report_text = build_report(
             total=total_questions,
             correct=self.results['correct'],
             wrong_items=self.results['wrong_items']
         )
         
         self.ui.display_final_report(report_text)
-    
-    def _build_custom_report(self, total: int, correct: int, wrong_items: List[Dict]) -> str:
-        """
-        Tworzy raport tekstowy z wynikami quizu
-        
-        Args:
-            total: Liczba wszystkich pytań
-            correct: Liczba poprawnych odpowiedzi
-            wrong_items: Lista błędnych odpowiedzi
-            
-        Returns:
-            Sformatowany raport tekstowy
-        """
-        wrong = len(wrong_items)
-        percentage = (correct / total * 100) if total > 0 else 0
-        
-        # Nagłówek
-        report = f"""
-  📊 Statystyki:
-     • Wszystkie pytania: {total}
-     • Poprawne odpowiedzi: {correct}
-     • Błędne odpowiedzi: {wrong}
-     • Wynik procentowy: {percentage:.1f}%
-"""
-        
-        # Ocena
-        if percentage >= 90:
-            grade = "🏆 DOSKONALE!"
-        elif percentage >= 75:
-            grade = "🎉 BARDZO DOBRZE!"
-        elif percentage >= 60:
-            grade = "👍 DOBRZE!"
-        elif percentage >= 50:
-            grade = "📚 ŚREDNIO - POTRZEBA WIĘCEJ NAUKI"
-        else:
-            grade = "💪 NIE PODDAWAJ SIĘ - ĆWICZ DALEJ!"
-        
-        report += f"\n  🎯 Ocena: {grade}\n"
-        
-        # Lista błędów
-        if wrong_items:
-            report += f"\n  ❌ Błędne odpowiedzi:\n"
-            for item in wrong_items:
-                report += f"\n     Pytanie {item['index']}: {item['question']}\n"
-                report += f"     • Twoja odpowiedź: {item['user'].upper()}\n"
-                report += f"     • Poprawna odpowiedź: {item['correct'].upper()} - {item['correct_text']}\n"
-        else:
-            report += f"\n  🌟 Gratulacje! Wszystkie odpowiedzi były poprawne!\n"
-        
-        return report
 
 
 def main():

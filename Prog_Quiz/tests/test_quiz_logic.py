@@ -1,6 +1,6 @@
 import pytest
 from quiz_logic import (
-    Question, Quiz, QuizBackend,
+    Question, Quiz,
     QuizException, InvalidQuestionError, InvalidAnswerError,
     QuizStateError, EmptyQuizError
 )
@@ -232,83 +232,6 @@ def test_quiz_get_current_question_at_end():
     assert quiz.get_current_question() is None
 
 
-# ===== TESTY KLASY QUIZBACKEND =====
-
-def test_quiz_backend_basic():
-    """Test podstawowej funkcjonalności backendu"""
-    backend = QuizBackend()
-    result = {"score": 2, "max_score": 2}
-    
-    backend.save_result("user1", result)
-    assert backend.get_result("user1") == result
-    assert backend.get_result("user2") is None
-
-
-def test_quiz_backend_multiple_users():
-    """Test obsługi wielu użytkowników"""
-    backend = QuizBackend()
-    
-    backend.save_result("user1", {"score": 5})
-    backend.save_result("user2", {"score": 8})
-    backend.save_result("user3", {"score": 3})
-    
-    assert backend.get_result("user1") == {"score": 5}
-    assert backend.get_result("user2") == {"score": 8}
-    assert backend.get_result("user3") == {"score": 3}
-
-
-def test_quiz_backend_overwrite_result():
-    """Test nadpisywania wyniku użytkownika"""
-    backend = QuizBackend()
-    
-    backend.save_result("user1", {"score": 5})
-    assert backend.get_result("user1") == {"score": 5}
-    
-    backend.save_result("user1", {"score": 10})
-    assert backend.get_result("user1") == {"score": 10}
-
-
-def test_quiz_backend_invalid_user_id():
-    """Test walidacji ID użytkownika"""
-    backend = QuizBackend()
-    
-    # Pusty string
-    with pytest.raises(ValueError, match="niepustym stringiem"):
-        backend.save_result("", {"score": 5})
-    
-    with pytest.raises(ValueError, match="niepustym stringiem"):
-        backend.save_result("   ", {"score": 5})
-    
-    # Nie string
-    with pytest.raises(ValueError, match="niepustym stringiem"):
-        backend.save_result(123, {"score": 5})
-    
-    # Get z pustym ID
-    with pytest.raises(ValueError, match="niepustym stringiem"):
-        backend.get_result("")
-
-
-def test_quiz_backend_invalid_result_type():
-    """Test walidacji typu wyniku"""
-    backend = QuizBackend()
-    
-    # Nie dict
-    with pytest.raises(ValueError, match="Wynik musi być słownikiem"):
-        backend.save_result("user1", "not a dict")
-    
-    with pytest.raises(ValueError, match="Wynik musi być słownikiem"):
-        backend.save_result("user1", [1, 2, 3])
-
-
-def test_quiz_backend_whitespace_handling():
-    """Test obsługi spacji w ID użytkownika"""
-    backend = QuizBackend()
-    
-    backend.save_result("  user1  ", {"score": 5})
-    assert backend.get_result("user1") == {"score": 5}
-    assert backend.get_result("  user1  ") == {"score": 5}
-
-
 # ===== TESTY INTEGRACYJNE =====
 
 def test_full_quiz_scenario():
@@ -322,7 +245,6 @@ def test_full_quiz_scenario():
     
     # Utworzenie quizu
     quiz = Quiz(questions)
-    backend = QuizBackend()
     
     # Rozpoczęcie quizu
     quiz.start()
@@ -339,11 +261,6 @@ def test_full_quiz_scenario():
     summary = quiz.get_summary()
     assert summary["score"] == 3  # 1 + 2 + 0
     assert summary["max_score"] == 6
-    
-    # Zapis wyniku
-    backend.save_result("test_user", summary)
-    saved = backend.get_result("test_user")
-    assert saved["score"] == 3
 
 
 def test_edge_case_single_question():
