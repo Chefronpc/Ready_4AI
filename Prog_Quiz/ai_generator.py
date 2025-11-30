@@ -1,7 +1,12 @@
 from typing import List, TypedDict, Literal
 import json
 import requests
-from config import MIN_QUESTIONS, MAX_QUESTIONS, AI_API_URL, AI_API_KEY
+from config import MIN_QUESTIONS, MAX_QUESTIONS, AI_API_URL, AI_API_KEY, OPENAI_MODEL
+from dotenv import load_dotenv
+import os
+
+# Wczytanie zmiennych środowiskowych z pliku .env
+load_dotenv()
 
 EXPECTED_QUESTION_KEYS = ("question", "a", "b", "c", "d", "correct")
 
@@ -76,7 +81,7 @@ Przykład:
 ]"""
         
         payload = {
-            "model": "gpt-3.5-turbo",
+            "model": OPENAI_MODEL,  # Użycie modelu zdefiniowanego w config.py
             "messages": [
                 {"role": "system", "content": "Jesteś pomocnym asystentem generującym pytania quizowe. Zwracasz TYLKO czysty JSON bez dodatkowego formatowania."},
                 {"role": "user", "content": prompt}
