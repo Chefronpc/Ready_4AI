@@ -85,7 +85,7 @@ class UITextInterface:
         welcome_message = """
         📚 Funkcjonalności:
            • Generowanie pytań z wybranego tematu
-           • Test wielokrotnego wyboru
+           • Test jednokrotnego wyboru
            • Raport z wynikami
            
         🎯 Jak zacząć:

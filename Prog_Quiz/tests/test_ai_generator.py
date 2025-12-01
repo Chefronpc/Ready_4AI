@@ -1,5 +1,6 @@
 from unittest.mock import MagicMock, patch
 import pytest
+import requests
 
 from ai_generator import AIServiceError, InvalidModelResponseError, QuizItem, generate_quiz
 from config import MAX_QUESTIONS, MIN_QUESTIONS
@@ -74,10 +75,19 @@ def test_generate_quiz_above_max_questions(n_questions: int):
 @patch('ai_generator.requests')  # Użycie requst do komunikacji z API
 def test_generate_quiz_valid_input(mock_requests, valid_quiz_response: list):
     """Test: prawidłowe wejście powinno zwrócić poprawną listę QuizItem"""
-    # Mockowanie odpowiedzi z AI
+    # Mockowanie odpowiedzi z AI w formacie OpenAI Chat Completions
+    import json
     mock_response = MagicMock()
     mock_response.status_code = 200
-    mock_response.json.return_value = valid_quiz_response
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps(valid_quiz_response)
+                }
+            }
+        ]
+    }
     mock_requests.post.return_value = mock_response
 
     result = generate_quiz("Python", 3)
@@ -105,13 +115,284 @@ def test_generate_quiz_valid_input(mock_requests, valid_quiz_response: list):
 @patch('ai_generator.requests')
 def test_generate_quiz_boundary_questions(mock_requests, valid_quiz_item: QuizItem, n_questions: int):
     """Test: Liczba pytań na granicach zakresu powinna działać poprawnie"""
-    # Mock odpowiedzi z odpowiednią liczbą pytań
+    # Mock odpowiedzi z odpowiednią liczbą pytań w formacie OpenAI
+    import json
     mock_response = MagicMock()
     mock_response.status_code = 200
-    mock_response.json.return_value = [valid_quiz_item] * n_questions
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps([valid_quiz_item] * n_questions)
+                }
+            }
+        ]
+    }
     mock_requests.post.return_value = mock_response
 
     result = generate_quiz("Python", n_questions)
 
     assert len(result) == n_questions
 
+# --- Testy walidacji odpowiedzi AI ---
+@patch('ai_generator.requests')
+def test_generate_quiz_missing_question_key(mock_requests):
+    """Test: brak klucza 'question' w odpowiedzi powinien wywołać InvalidModelResponseError"""
+    import json
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps([{
+                        "a": "Opcja A",
+                        "b": "Opcja B",
+                        "c": "Opcja C",
+                        "d": "Opcja D",
+                        "correct": "a"
+                    }])
+                }
+            }
+        ]
+    }
+    mock_requests.post.return_value = mock_response
+    
+    with pytest.raises(InvalidModelResponseError):
+        generate_quiz("Python", 1)
+
+
+@patch('ai_generator.requests')
+def test_generate_quiz_missing_choices(mock_requests):
+    """Test: brak opcji odpowiedzi powinien wywołać InvalidModelResponseError"""
+    import json
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps([{
+                        "question": "Test?",
+                        "a": "Opcja A",
+                        "b": "Opcja B",
+                        # brak 'c' i 'd'
+                        "correct": "a"
+                    }])
+                }
+            }
+        ]
+    }
+    mock_requests.post.return_value = mock_response
+    
+    with pytest.raises(InvalidModelResponseError):
+        generate_quiz("Python", 1)
+
+
+@pytest.mark.parametrize("invalid_correct", ["e", "f", "x", "1", "", "ab"])
+@patch('ai_generator.requests')
+def test_generate_quiz_invalid_correct_value(mock_requests, invalid_correct):
+    """Test: nieprawidłowa wartość 'correct' powinna wywołać InvalidModelResponseError"""
+    import json
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps([{
+                        "question": "Test?",
+                        "a": "Opcja A",
+                        "b": "Opcja B",
+                        "c": "Opcja C",
+                        "d": "Opcja D",
+                        "correct": invalid_correct
+                    }])
+                }
+            }
+        ]
+    }
+    mock_requests.post.return_value = mock_response
+    
+    with pytest.raises(InvalidModelResponseError):
+        generate_quiz("Python", 1)
+
+
+@patch('ai_generator.requests')
+def test_generate_quiz_wrong_number_of_questions(mock_requests, valid_quiz_item):
+    """Test: AI zwraca nieprawidłową liczbę pytań"""
+    import json
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    # Oczekujemy 5 pytań, ale AI zwraca 3
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps([valid_quiz_item] * 3)
+                }
+            }
+        ]
+    }
+    mock_requests.post.return_value = mock_response
+    
+    with pytest.raises(InvalidModelResponseError):
+        generate_quiz("Python", 5)
+
+
+# --- Testy obsługi błędów komunikacji ---
+@patch('ai_generator.requests')
+def test_generate_quiz_api_connection_error(mock_requests):
+    """Test: błąd połączenia z API powinien wywołać AIServiceError"""
+    from requests.exceptions import ConnectionError as RequestsConnectionError
+    mock_requests.post.side_effect = RequestsConnectionError("Network error")
+    mock_requests.exceptions = requests.exceptions
+    
+    with pytest.raises(AIServiceError):
+        generate_quiz("Python", 5)
+
+
+@patch('ai_generator.requests')
+def test_generate_quiz_api_timeout(mock_requests):
+    """Test: timeout API powinien wywołać AIServiceError"""
+    from requests.exceptions import Timeout
+    mock_requests.post.side_effect = Timeout("Request timeout")
+    mock_requests.exceptions = requests.exceptions
+    
+    with pytest.raises(AIServiceError):
+        generate_quiz("Python", 5)
+
+
+@pytest.mark.parametrize("status_code", [400, 401, 403, 404, 500, 502, 503])
+@patch('ai_generator.requests')
+def test_generate_quiz_api_error_status_codes(mock_requests, status_code):
+    """Test: błędne kody statusu HTTP powinny wywołać AIServiceError"""
+    from requests.exceptions import HTTPError
+    mock_response = MagicMock()
+    mock_response.status_code = status_code
+    mock_response.text = f"Error {status_code}"
+    http_error = HTTPError(f"HTTP {status_code}")
+    http_error.response = mock_response
+    mock_response.raise_for_status.side_effect = http_error
+    mock_requests.post.return_value = mock_response
+    mock_requests.exceptions = requests.exceptions
+    
+    with pytest.raises(AIServiceError):
+        generate_quiz("Python", 5)
+
+
+@patch('ai_generator.requests')
+def test_generate_quiz_invalid_json_response(mock_requests):
+    """Test: nieprawidłowy JSON w odpowiedzi powinien wywołać InvalidModelResponseError"""
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.side_effect = ValueError("Invalid JSON")
+    mock_requests.post.return_value = mock_response
+    
+    with pytest.raises(InvalidModelResponseError):
+        generate_quiz("Python", 5)
+
+
+@patch('ai_generator.requests')
+def test_generate_quiz_non_list_response(mock_requests):
+    """Test: odpowiedź nie będąca listą powinna wywołać InvalidModelResponseError"""
+    import json
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps({"error": "not a list"})
+                }
+            }
+        ]
+    }
+    mock_requests.post.return_value = mock_response
+    
+    with pytest.raises(InvalidModelResponseError):
+        generate_quiz("Python", 5)
+
+
+# --- Testy walidacji wszystkich kluczy ---
+@pytest.mark.parametrize("missing_key", ["a", "b", "c", "d", "correct"])
+@patch('ai_generator.requests')
+def test_generate_quiz_missing_required_keys(mock_requests, missing_key):
+    """Test: brak wymaganego klucza powinien wywołać InvalidModelResponseError"""
+    import json
+    quiz_item = {
+        "question": "Test?",
+        "a": "Opcja A",
+        "b": "Opcja B",
+        "c": "Opcja C",
+        "d": "Opcja D",
+        "correct": "a"
+    }
+    # Usuń jeden klucz
+    del quiz_item[missing_key]
+    
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps([quiz_item])
+                }
+            }
+        ]
+    }
+    mock_requests.post.return_value = mock_response
+    
+    with pytest.raises(InvalidModelResponseError):
+        generate_quiz("Python", 1)
+
+
+# --- Testy poprawności formatowania danych ---
+@patch('ai_generator.requests')
+def test_generate_quiz_all_correct_values_valid(mock_requests):
+    """Test: wszystkie prawidłowe wartości 'correct' (a, b, c, d) powinny być akceptowane"""
+    import json
+    valid_items = [
+        {
+            "question": f"Pytanie {i}?",
+            "a": "Opcja A",
+            "b": "Opcja B",
+            "c": "Opcja C",
+            "d": "Opcja D",
+            "correct": correct_value
+        }
+        for i, correct_value in enumerate(['a', 'b', 'c', 'd'], 1)
+    ]
+    
+    mock_response = MagicMock()
+    mock_response.status_code = 200
+    mock_response.json.return_value = {
+        'choices': [
+            {
+                'message': {
+                    'content': json.dumps(valid_items)
+                }
+            }
+        ]
+    }
+    mock_requests.post.return_value = mock_response
+    
+    result = generate_quiz("Python", 4)
+    
+    assert len(result) == 4
+    assert result[0]["correct"] == "a"
+    assert result[1]["correct"] == "b"
+    assert result[2]["correct"] == "c"
+    assert result[3]["correct"] == "d"
+
+
+# --- Testy integracyjne (jeśli implementacja jest gotowa) ---
+@pytest.mark.skip(reason="Wymaga implementacji generate_quiz i prawdziwego API")
+def test_generate_quiz_integration_with_real_api():
+    """Test integracyjny z prawdziwym API (do odznaczenia po implementacji)"""
+    result = generate_quiz("Python basics", 3)
+    
+    assert len(result) == 3
+    assert all(item["correct"] in ["a", "b", "c", "d"] for item in result)
+    assert all(len(item["question"]) > 0 for item in result)
